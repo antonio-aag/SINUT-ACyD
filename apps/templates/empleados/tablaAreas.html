@@ -1,0 +1,120 @@
+{% extends "plantillaPadre.html" %}
+
+{% block content %}
+
+
+<div class="row">
+  <p class="subtemas">Listado de Tipos de Areas</p>
+
+  <div class="row">
+    <div class="col-sm-8 text-align ">
+      <a href="/areas/" class="botonAgregar">
+        <i class="iconadd material-icons">add_circle</i> Agregar Nueva area </a>
+    </div>
+    <div class="col-sm-4 text-end search-bar">
+      <div class="input-group ">
+        <span class="input-group-text" style="background-color: #00a886 "><i class="iconadd material-icons">search</i></span>
+        <input type="text" class="form-control" id="searchInput" onkeyup="filterTable()" placeholder="Buscar...">
+          
+      </div>
+  </div>
+  </div>
+  
+  <div class="table-responsive">
+    
+      <table class="tablep table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Area</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for area in areas %}
+          <form id="formulario-Areas" method="GET" action="/editarAreas/{{ area.idArea }}">
+            {% csrf_token %}
+          <tr>
+            <td>{{ forloop.counter }}</td>
+            <td><input class="editable" type="text" name="area" id="area" value="{{area.nombreArea}}" maxlength="50"></td>
+           
+            <td><button class="material-icons-form-save" title="Guardar Cambios" >save</button></td>
+          </tr>
+        </form>
+          {% endfor %}
+        </tbody>
+      </table>
+  </div>
+</div>
+
+<nav aria-label="Page navigation">
+  <ul class="pagination custom-pagination">
+      {% if areas.has_previous %}
+          <li class="page-item">
+              <a class="page-link" href="?page={{ areas.previous_page_number }}" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                  <span class="sr-only">Anterior</span>
+              </a>
+          </li>
+      {% else %}
+          <li class="page-item disabled">
+              <span class="page-link" aria-disabled="true">&laquo;</span>
+          </li>
+      {% endif %}
+      
+      <li class="page-item active" aria-current="page">
+          <span class="page-link">
+              Página {{ areas.number }} de {{ areas.paginator.num_pages }}
+              <span class="sr-only"></span>
+          </span>
+      </li>
+
+      {% if puestos.has_next %}
+          <li class="page-item">
+              <a class="page-link" href="?page={{ areas.next_page_number }}" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                  <span class="sr-only">Siguiente</span>
+              </a>
+          </li>
+      {% else %}
+          <li class="page-item disabled">
+              <span class="page-link" aria-disabled="true">&raquo;</span>
+          </li>
+      {% endif %}
+  </ul>
+</nav>
+
+
+
+<script>
+  function filterTable() {
+      // Obtener el valor de búsqueda del input
+      const searchInput = document.getElementById('searchInput').value.toUpperCase();
+      const table = document.querySelector('.tablep');
+      const tr = table.getElementsByTagName('tr');
+  
+      // Recorrer todas las filas de la tabla, excepto la primera (encabezados)
+      for (let i = 1; i < tr.length; i++) {
+          const tds = tr[i].getElementsByTagName('td');
+          let displayRow = false;
+  
+          // Recorrer todas las celdas de la fila
+          for (let j = 0; j < tds.length; j++) {
+              const td = tds[j];
+              if (td) {
+                  // Comprobar si el texto de la celda coincide con la búsqueda
+                  if (td.innerHTML.toUpperCase().indexOf(searchInput) > -1) {
+                      displayRow = true;
+                      break;
+                  }
+              }
+          }
+  
+          // Mostrar u ocultar la fila según el resultado de la búsqueda
+          tr[i].style.display = displayRow ? '' : 'none';
+      }
+  }
+  </script>
+
+ 
+{% endblock %}

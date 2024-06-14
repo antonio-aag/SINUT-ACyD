@@ -1,0 +1,144 @@
+{% extends "plantillaPadre.html" %}
+
+{% block content %}
+
+{% load static%}
+<div class="row centrar">
+    <div class="card border-secondary" style="max-width: 80%;">
+        <div class="card-body">
+            <p>{{datos}}</p>
+            <form class="row g-3" action="{% url 'Aspirante:actualizaAspirante' %}" method="post"
+                enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="hidden" name="aspirante" id="aspirante" value="{{aspirante.idAspirante}}">
+                <div class="col-md-12">
+                    <p class="subtemas"><i class="material-icons iconhr">person</i> Datos del Aspirante</p>
+                </div>
+                <div class="col-md-6">
+                    <label class="custom-label form-label">Nombre Completo</label>
+                    <input type="text" disabled="true" class="custom-input form-control" name="nombre" value="{{persona.nombre}} {{persona.ape1}} {{persona.ape2}}">
+                </div>
+                <div class="col-md-3">
+                    <label class="custom-label form-label">Edad</label>
+                    <input type="text" disabled="true" class="custom-input form-control" name="edad""
+                        value="{{edad}}">
+                </div>
+                <div class="col-md-3">
+                    <label for="estadoCivil" class="custom-label form-label">Estado Civil</label>
+                    <select id="estadoCivil" name="estadoCivil" class="custom-input form-select" disabled="true">
+                        <option selected disabled="true" value=""></option>
+                        <option value="1">Soltero (a)</option>
+                        <option value="2">Casado (a)</option>
+                        <option value="3">Viudo (a)</option>
+                        <option value="4">Divorciado (a)</option>
+                        <option value="5">Unión libre</option>
+                        <option value="6">No especificar</option>
+                    </select>
+                    <input type="hidden" id="estadoCivilBD" value="{{persona.estadoCivil}}">
+                </div>
+
+                <div class="col-md-5">
+                    <label class="custom-label form-label">Domicilio</label>
+                    <input type="text" disabled="true" class="custom-input form-control" name="domicilio" value="{{persona.calle}} {{persona.numero}}">
+                </div>
+                <div class="col-md-2">
+                    <label class="custom-label form-label">Año de egreso</label>
+                    <input type="number" disabled="true" class="custom-input form-control" id="egreso" name="egreso" value="{{aspirante.añoEgresoPrepa}}">
+                </div>
+                <div class="col-md-2">
+                    <label class="custom-label form-label">Promedio de bachillerato</label>
+                    <input type="number" step="any" disabled="true"class="custom-input form-control" name="prom" value="{{aspirante.promedioPrepa}}">
+                </div>
+                <div class="col-md-3">
+                    <label class="custom-label form-label">CURP</label>
+                    <input type="text" disabled="true" class="custom-input form-control" name="curp" id="curp" value="{{persona.curp}}">
+                </div>
+                
+                <div class="col-md-12">
+                    <p class="admision"> Aspirante aceptado</p>
+                </div>
+                <div class="col-md-6">
+                    <label for="carrera1" class="custom-label form-label">Carrera a inscribirse</label>
+                    <select id="carrera1" name="carrera1" class="custom-input form-select" required>
+                        {% for carrer in carreras%}
+                        <option value="{{carrer.idCarrera}}">{{carrer.nombreCarrera}}</option>
+                        {% endfor %}
+                    </select>
+                    <input type="hidden" value="{{encuesta.idCarrera_id}}" id="carrera1BD">
+                </div>
+                <div class="col-md-6">
+                    <label for="planEstudios" class="custom-label form-label">Plan de estudios</label>
+                    <select id="planEstudios" name="planEstudios" class="custom-input form-select" required>
+                        <option value="" selected disabled="true"></option>
+                    </select>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="periodoCuatri" class="custom-label form-label">Periodo de cuatrimestre</label>
+                    <select id="periodoCuatri" name="periodoCuatri" class="custom-input form-select" required>
+                        <option value="" selected disabled="true"></option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label for="grupo" class="custom-label form-label">Grupo</label>
+                    <select id="grupo" name="grupo" class="custom-input form-select" required>
+                        <option value="" selected disabled="true"></option>
+                    </select>
+                </div>
+                <div class="contenedor col-md-3">
+                    <button class="contenido btns btn">
+                        Crear grupo
+                    </button>
+                </div>
+
+                <div class="col-md-12">
+                    <p class="subtemas"> <i class="material-icons iconhr">folder</i> Documentación entregada (original)</p>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-check form-check-inline">
+                        <input class="customCBX form-check-input check" type="checkbox" id="acta" name="acta" value="">
+                        <label for="acta" class="custom-label form-check-label">Acta de nacimiento</label>
+
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="customCBX form-check-input check" type="checkbox" id="curpDoc" name="curpDoc"
+                            value="">
+                        <label for="curp" class="custom-label form-check-label">curp</label>
+
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="customCBX form-check-input check" type="checkbox" id="foto" name="foto" value="">
+                        <label for="foto" class="custom-label form-check-label">Fotografias</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="customCBX form-check-input check" type="checkbox" id="certificado" name="certificado" value="">
+                        <label for="certificado" class="custom-label form-check-label">Análisis sanguíneo</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="customCBX form-check-input check" type="checkbox" id="certificado"
+                            name="certificado" value="">
+                        <label for="certificado" class="custom-label form-check-label">Certificado de bachillerato</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="customCBX form-check-input check" type="checkbox" id="constancia" name="constancia" value="">
+                        <label for="constancia" class="custom-label form-check-label">Certificado condicionado</label>
+                    </div>
+
+                </div>
+                <div class="col-md-4">
+                    <label class="custom-label form-label">Folio recibo de pago</label>
+                    <input type="text" class="custom-input form-control" name="folioCeneval" id="folioReciboPago" required
+                        maxlength="30">
+                </div>
+                <div style="text-align: end; display: ruby;">
+                    <button type="submit" class="btnr btn">Inscribir</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+<script src='{% static "js/InscribirAsp.js" %}'></script>
+</div>
+
+{% endblock %}

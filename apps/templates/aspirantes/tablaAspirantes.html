@@ -1,0 +1,89 @@
+{% extends "plantillaPadre.html" %}
+
+{% block content %}
+
+<div class="row">
+    <p class="subtemas">Inscribir aspirante a Técnico Superior Universiario</p>
+    <div class="col-sm-8 text-align "></div>
+    <div class="col-sm-4  text-end search-bar"">
+        <div class="input-group ">
+            <span class="input-group-text" style="background-color: #00a886 "><i
+                    class="iconadd material-icons">search</i></span>
+            <input type="text" class="form-control" id="searchInput" onkeyup="filterTable()" placeholder="Buscar...">
+        </div>
+    </div>
+</div>
+
+<div class="centrar row">
+    <div class="table-responsive" style="max-width: 80%;">
+        <table class="tablep table">
+            <thead>
+                <tr>
+                    <th>Fólio</th>
+                    <th scope="col">Nombre del aspirante</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for aspirante in laspirantes %}
+                <form id="" method="GET" action="{% url 'Aspirante:editarAspiranteAceptado' id=aspirante.idPersona.idPersona %}">
+                    {% csrf_token %}
+                    <tr>
+                        <td  style="vertical-align: middle;">
+                            {{aspirante.idPersona_id}}
+                        </td>
+                        <td style="vertical-align: middle;">
+                            {% if aspirante.idPersona.ape2 != None %}
+                                {{aspirante.idPersona.nombre}} {{aspirante.idPersona.ape1}} {{aspirante.idPersona.ape2}}
+                            {% else %}
+                                {{aspirante.idPersona.nombre}} {{aspirante.idPersona.ape1}}
+                            {% endif %}
+                        </td>
+                        <td>
+                            <button style="border: none; background: none;" type="submit" title="Editar datos">
+                                <i style="font-size: 2rem !important;" class="material-icons iconnum">save_as</i>
+                            </button>
+                        </td>
+                    </tr>
+                </form>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+<script>
+    function filterTable() {
+        // Obtener el valor de búsqueda del input
+        const searchInput = document.getElementById('searchInput').value.toUpperCase();
+        const table = document.querySelector('.tablep');
+        const tr = table.getElementsByTagName('tr');
+
+        // Recorrer todas las filas de la tabla, excepto la primera (encabezados)
+        for (let i = 1; i < tr.length; i++) {
+            const tds = tr[i].getElementsByTagName('td');
+            let displayRow = false;
+
+            // Recorrer todas las celdas de la fila
+            for (let j = 0; j < tds.length; j++) {
+                const td = tds[j];
+                if (td) {
+                    // Comprobar si el texto de la celda coincide con la búsqueda
+                    if (td.innerHTML.toUpperCase().indexOf(searchInput) > -1) {
+                        displayRow = true;
+                        break;
+                    }
+                }
+            }
+
+            // Mostrar u ocultar la fila según el resultado de la búsqueda
+            tr[i].style.display = displayRow ? '' : 'none';
+        }
+    }
+</script>
+
+</div>
+
+{% endblock %}

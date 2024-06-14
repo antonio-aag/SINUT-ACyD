@@ -1,0 +1,1533 @@
+
+@import url('https://fonts.googleapis.com/css?family=Nova+Slim&display=swap');
+
+body, html {
+	line-height: 1.8;
+    font-family: 'Roboto', sans-serif;
+     color: #555e58;
+	 text-transform:capitalize;
+	text-rendering: optimizeLegibility !important;
+	-webkit-font-smoothing: antialiased !important;
+	 font-weight: 400;
+	 margin:0px;
+     padding:0px;
+}
+
+
+h1, h2, h3, h4, h6, .h1, .h2, .h3, .h4 {
+    font-weight: 400;
+    line-height: 1.5em;
+}
+
+
+p {
+	font-size: 15px;
+	margin: 12px 0 0;
+	line-height: 40px;
+}
+
+
+.colorhr{
+    color:#003263; /*AZUL OFICIAL*/
+    opacity: 1;
+
+}
+
+.subtemas{
+    font-size: 20px;
+    color:#ffffff;
+    background-color:#003263;
+    text-align:center;
+    margin: 1% auto; 
+}
+
+.sutemas2{
+    
+    color:#003263;
+    text-align:center;
+    
+}
+
+.cardp{
+
+    padding-top: 10%;
+    padding-bottom: 10%;
+   
+}
+
+.cardpadding{
+
+    padding-right: 10%;
+   
+}
+
+.titlecard{
+    font-size: 55px;
+    text-align: center;
+
+}
+
+.icong{
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 20px;  /* Preferred icon size */
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+   /*padding-top: 10%;*/
+   
+   
+    
+  
+  
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+  
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+  
+    /* Support for IE. */
+    font-feature-settings: 'liga';
+    
+}
+
+.iconform{
+    display: inline-block;
+    vertical-align: top;
+    text-align: right;
+    color:#003263;
+}
+
+.form-switch2{
+    padding-top: 2.1em;
+    padding-left: 3.1em;
+}
+
+.iconhr{
+    display: inline-block;
+    /*vertical-align: -15%;*/
+    vertical-align: text-bottom;
+    color:#ffffff;
+   /* font-size: 20px !important;*/
+}
+
+
+
+.iconadd {
+    display: inline-block;
+    color: white;
+    font-size: 20px !important; 
+    vertical-align: middle; 
+    margin-left: 3px; 
+}
+
+/* estas 2 clases son para un posible número sobre el formulario */
+.iconnum{
+    display: inline-block;
+    /*vertical-align: -15%;*/
+    vertical-align: text-bottom;
+    color:#003263;
+    font-size: 32px !important;
+}
+.subtemasnum{
+    text-align:center;
+}
+
+/*.check{
+
+}*/
+.contenedor {
+    position: relative;
+  }
+  
+  .contenido {
+    width: 94%;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    
+  }
+
+.admision{
+    font-size: 20px;
+    color:#ffffff;
+    background-color:#f89a51;
+    text-align:center;
+    margin: 1% auto; 
+}
+
+.customCBX{
+    border: solid 2px black;
+}
+
+.centrar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    margin-top: 25px;
+  }
+
+#reportPR{
+    border-collapse: collapse;
+    margin-top: 0;
+}
+
+#reportPR td{
+    padding: 10px;
+    width: 50% !important;
+}
+
+.custom-confirm-button-class {
+    background-color: #f89a51 !important;
+    color: white;
+  }
+
+.custom-label {
+    font-size: 16px; 
+}
+
+    @media (max-width:1660px)
+		{
+		    .custom-label {
+				font-size: 14px; 
+			}
+		}
+		
+		@media (max-width:993px)
+		{
+		    .custom-label {
+				font-size: 12px; 
+			}
+		}
+
+		@media (max-width:577px)
+				{
+					.custom-label {
+						font-size: 16px; 
+					}
+				}
+
+.custom-input{
+    font-size: 16px;
+}
+@media (max-width:1660px)
+		{
+		    .custom-input {
+				font-size: 14px; 
+			}
+		}
+		
+		@media (max-width:993px)
+		{
+		    .custom-input {
+				font-size: 12px; 
+			}
+		}
+
+		@media (max-width:577px)
+				{
+					.custom-input {
+						font-size: 16px; 
+					}
+				}
+
+
+.btnr{
+    float: right;
+    background-color:#003263;
+    color: #ffffff;
+    border: #ffffff;
+
+}
+
+.btns{
+    float: left;
+    background-color:#00A886;
+    border: #ffffff;
+    color: #ffffff;
+
+}
+
+.btns:hover{
+    color:#ffffff;
+    background-color:#003263;
+}
+
+.btnsv{
+    float: right;
+    background-color:#003263;
+    color: #ffffff;
+
+}
+
+.btnsv:hover{
+    color:#ffffff;
+    background-color:#f89a51;
+}
+
+.btnr:hover{
+    color:#ffffff;
+    background-color:#00A886;
+    
+}
+
+.btn2{
+   
+    background-color:#00a886;
+}
+
+.tablep {
+    margin-top: 2%;
+    width: 100% !important; /* Importante para anular el ancho fijo de Bootstrap */
+    table-layout: auto !important; /* Importante para anular el table-layout de Bootstrap */
+  }
+  
+  .tablep th,
+  .tablep td {
+    width: auto !important; /* Importante para anular cualquier ancho fijo */
+    white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+    padding: 0.5rem;
+     /* Añade un pequeño padding para separar el contenido del borde */
+  }
+  
+  .tablep th {
+    background-color: #f0f0f0; /* Color de fondo para los encabezados de columna */
+  }
+  
+  .editable {
+    width: 100%; /* Establece el ancho al 100% del contenedor td */
+    box-sizing: border-box; /* Incluye el padding y el borde en el ancho total */
+    padding: 0.25rem 0.5rem; /* Agrega un pequeño padding interno */
+    border: 1px solid #ffffff; /* Agrega un borde alrededor del input */
+  }
+
+
+/* Estilos generales para los mensajes */
+.messages {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .messages li {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+  
+  /* Estilos para mensajes de depuración (debug) */
+  .messages .debug {
+    background-color: #d9edf7;
+    border: 1px solid #bce8f1;
+    color: #31708f;
+  }
+  
+  /* Estilos para mensajes informativos (info) */
+  .messages .info {
+    background-color: #d9edf7;
+    border: 1px solid #bce8f1;
+    color: #31708f;
+  }
+  
+  /* Estilos para mensajes de éxito (success) */
+  .messages .success {
+    background-color: #99D9CC;
+    border: 1px solid #00A886;
+    color: #00A886;
+  }
+  
+  /* Estilos para mensajes de advertencia (warning) */
+  .messages2 .warning {
+    background-color: #f89a51;
+    border: 1px solid #f89a51;
+    color: #8a6d3b;
+  }
+  
+  /* Estilos para mensajes de error (error) */
+  .messages2 .error {
+    background-color: #901010;
+    border: 1px solid #f89a51;
+    color: #a94442;
+  }
+
+
+
+button:focus{
+	box-shadow:none;
+	outline:none;
+	border:none;
+}
+
+button{
+	cursor:pointer;
+}
+
+ul, ol {
+	padding: 0;
+	margin:0px;
+		list-style: none;
+}
+
+
+
+a,
+a:hover,
+a:focus {
+    color: #333;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+
+
+/*Cristian*/
+.container-user {
+    width: 100%; 
+    height: 60%;
+    text-align: center;
+    
+}
+
+.container-uni {
+    width: 100%; 
+    height: 73%;
+    text-align: center;
+    
+}
+
+
+.container-sub {
+    width: 100%; 
+    height: auto;
+    text-align: center;
+}
+/*colum de universidades*/
+
+
+
+
+
+.content {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.form {
+    margin-bottom: 20px;
+    text-align: left; 
+}
+
+.form-label {
+    font-weight: bold;
+    display: inline-block; /* Hacer que los elementos de etiqueta de formulario sean bloques en línea */
+    text-align: left; 
+}
+
+
+.form-check {
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+
+.flex-button {
+    display: flex;
+    background-color:#003263;
+    float: right;
+    align-items: center;
+    justify-content: center; 
+    border: none;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    height: 40px;
+    width: 90px;
+}
+
+
+
+.material-icons-form {
+    font-family: 'Material Icons';
+    color: #003263;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 150px;  /* Tamaño de icono preferido */
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    line-height: 0.8;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+    padding-bottom: 5%;
+}
+
+.material-icons-form-save {
+    font-family: 'Material Icons';
+    color: #003263;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 30px;  /* Tamaño de icono preferido */
+    display: flex; 
+    justify-content: end;
+    justify-content: center; 
+    align-items: center; 
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+    padding-bottom: 1%;
+    border: none; /* Esto quitará el marco */
+    background: none; /* Esto quitará el fondo */
+}
+
+
+
+
+.tablep thead th {
+    background-color: #003263;
+    color: #323538;
+    border: 1px solid #323538;
+  }
+
+  
+  .tablep td, .tablep th {
+    border: 1px solid #727577;
+  }
+
+  .btnt{
+    float: left;
+    background-color:#003263;
+    color: #ffffff;
+    border: #ffffff;
+
+}
+
+
+.botonAgregar {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #00A886;
+    color: white;
+    padding: 6px 15px; 
+    border-radius: 5px;
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
+    text-align: left;
+}
+  .botonAgregar i {
+    vertical-align: left; 
+    margin-right: 5px;
+  }
+
+  .custom-pagination {
+    justify-content: center;
+}
+
+.custom-pagination .page-item.active .page-link {
+    background-color: #00A886;
+    border-color: #00A886;
+    color: white; /* Añadido para hacer las letras blancas */
+}
+
+.custom-pagination .page-item .page-link {
+    color: #00A886;
+}
+
+
+
+/*responsividad del formulario usuarios*/
+
+
+
+@media screen and (max-width: 1582px) {
+    .container-user {
+        width: 35%; 
+        height: 70%;
+        margin: 50px auto; 
+    }
+
+    .form-label {
+        display: block; 
+        margin-bottom: 5px;
+    }
+
+    .btn {
+        float: none; 
+        margin-top: 15px; 
+        float: right;
+    }
+
+    .material-icons-form-user {
+        font-size: 200px; 
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container-user {
+        width: 70%; 
+        height: 70%;
+        margin: 50px auto; 
+    }
+
+    .form-label {
+        display: block; 
+        margin-bottom: 5px;
+    }
+
+    .btn {
+        float: none; 
+        margin-top: 15px; 
+        float: right;
+    }
+
+    .material-icons-form {
+        font-size: 200px; 
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .container-user {
+        width: 90%; 
+        padding: 10px; 
+    }
+
+    .btn {
+        padding: 8px 30px; 
+        float: right;
+    }
+
+    .material-icons-form {
+        font-size: 150px; 
+    }
+}
+
+/*responsividad del formulario universidades*/
+
+
+@media screen and (max-width: 1582px) {
+    .container-uni {
+        width: 90%; 
+        height: 85%;
+        margin: 50px auto; 
+    }
+
+    .form-label {
+        display: block; 
+        margin-bottom: 5px;
+    }
+
+    .btn {
+        float: none; 
+        margin-top: 15px; 
+        float: right;
+    }
+
+    .material-icons-form {
+        font-size: 200px; 
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container-uni {
+        width: 80%; 
+        height: 115%;
+        margin: 50px auto; 
+    }
+
+    .form-label {
+        display: block; 
+        margin-bottom: 5px;
+    }
+
+    .btn {
+        float: none; 
+        margin-top: 15px; 
+        float: right;
+    }
+
+    .material-icons-form {
+        font-size: 200px; 
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .container-uni {
+        width: 90%; 
+        padding: 10px; 
+    }
+
+    .btn {
+        padding: 8px 30px; 
+        float: right;
+    }
+
+    .material-icons-form {
+        font-size: 150px; 
+    }
+}
+
+/* Cristian */
+
+
+/*=======================================================
+  material-icons  copy & paste form site google material-icons
+  ==================================================*/
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://example.com/MaterialIcons-Regular.eot); /* For IE6-8 */
+  src: local('Material Icons'),
+    local('MaterialIcons-Regular'),
+    url(https://example.com/MaterialIcons-Regular.woff2) format('woff2'),
+    url(https://example.com/MaterialIcons-Regular.woff) format('woff'),
+    url(https://example.com/MaterialIcons-Regular.ttf) format('truetype');
+}
+
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+/*=======================================================
+  material-icons  copy & paste form site google material-icons
+  ==================================================*/
+
+
+
+.wrapper {
+	position: relative;
+    width:100%;
+	overflow:auto;
+}
+
+
+/*Espacio entre el footer */
+
+.espacio{
+		 height: 620px; /*Era 6200*/
+		 background:#EEEEEE;
+		}
+		
+		@media (max-width:1660px)
+		{
+		    .espacio{
+				 height: 500px; /*Era 500*/
+			}
+		}
+		
+		@media (max-width:993px)
+		{
+		    .espacio{
+				 height: 400px; /*eran 400*/
+			}
+		}
+
+		@media (max-width:577px)
+				{
+					.espacio{
+						 height: 200px;
+					}
+				}
+				
+				
+	/*Titulos Responsivos*/			
+				
+ @media (max-width:1197px)
+		{
+		    .card .category:not([class*="text-"]) {
+			color: #555555;
+			font-size: 14px;
+			font-weight: 400;
+			display:flex;
+			}
+		}
+		
+		@media (max-width:1123px)
+		{
+		    .card .category:not([class*="text-"]) {
+			color: #555555;
+			font-size: 14px;
+			font-weight: 400;
+			display:inline-flex;
+			}
+		}
+		
+		 @media (max-width:991px)
+		{
+		    .card .category:not([class*="text-"]) {
+			color: #555555;
+			font-size: 14px;
+			font-weight: 400;
+			display:flex;
+			}
+		}
+		
+		@media (max-width:247px)
+		{
+		    .card .category:not([class*="text-"]) {
+			color: #555555;
+			font-size: 13px;
+			font-weight: 400;
+			display:flex;
+			}
+		}
+
+/* ---------------------------------------------------
+    SIDEBAR STYLE start
+----------------------------------------------------- */
+
+
+
+#sidebar {
+    position:fixed;
+	height:100vh!important;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index:11;
+    width: 260px;
+	overflow:auto;
+	transition:all 0.3s ;
+    background: #FFFFFF;
+    box-shadow: 0 10px 30px -12px rgb(0 0 0 / 42%), 0 4px 25px 0px rgb(0 0 0 / 12%), 0 8px 10px -5px rgb(0 0 0 / 20%);
+}
+
+
+#sidebar::-webkit-scrollbar{
+	width:5px;
+	border-radius:10px;
+	background-color:#eee;
+	display:none;
+}
+#sidebar::-webkit-scrollbar-thumbs{
+	width:5px;
+	border-radius:10px;
+	background-color:#333;
+	display:none;
+}
+
+
+#sidebar:hover::-webkit-scrollbar{
+	display:block;
+}
+#sidebar:hover::-webkit-scrollbar-thumbs{
+	display:block;
+}
+
+#sidebar .sidebar-header {
+    padding:20px;
+	background-color:#ffffff;
+	border-bottom:1px solid #eee;
+}
+
+.sidebar-header h3{
+	color:#333;
+	font-size:17px;
+	margin:0px;
+	text-transform:uppercase;
+	transition:all 0.5s ease;
+	font-weight:600;
+}
+
+.sidebar-header h3 img{
+	width:45px;
+	margin-right:10px;
+}
+
+#sidebar ul li{
+	padding:2px 7px;
+}
+
+#sidebar ul li.active>a{
+    color: #333;
+    background-color: #E1E1E1;
+}
+
+#sidebar ul li a:hover{
+    color: #333;
+    background-color: #E1E1E1;
+}
+
+.dropdown-toggle::after {
+    position: absolute;
+    right: 10px;
+    top: 23px;
+}
+
+#sidebar ul li.drodown{
+	position:sticky;
+}
+
+
+#sidebar ul.components {
+    padding: 20px 0;
+}
+
+#sidebar ul li a {
+    padding: 10px;
+	line-height: 30px;
+	border-radius:5px;
+    font-size: 15px;
+	position:relative;
+    font-weight: 400;
+    display: block;
+}
+
+#sidebar ul li a span{
+	text-transform:capitalize;
+	display:inline-block;
+}
+
+#sidebar ul li a i {
+    position: relative;
+    margin-right: 10px;
+    top: 5px;
+	color: #003263;
+    margin-left: 10px;
+}
+
+
+
+
+
+/* ---------------------------------------------------
+   sidebar end
+----------------------------------------------------- */
+
+
+
+
+/*=======================================================
+   main-content navbar-design start
+   ===============================================*/
+
+
+
+#content {
+	position: relative;
+    transition: all 0.3s;
+	background-color: #EEEEEE;
+}
+
+.top-navbar{
+	width:100%;
+	z-index:9;
+	position:relative;
+}
+
+
+.main-content{
+	padding:10px 20px 0px 20px;
+	position: relative;
+    width: 100%;
+}
+
+
+
+.navbar{
+    background-color: #00a886;
+    color: #FFFFFF;
+}
+
+.navbar-brand {
+    color: #FFFFFF;
+}
+
+.navbar button{
+	background-color:transparent;
+	border:none;
+}
+.navbar button span{
+	color:#fff;
+}
+
+#sidebarCollapse{
+	border-radius:50%;
+	width:45px;
+	height:45px;
+	text-align:center;
+	line-height:45px;
+	margin-right:20px;
+	border:none;
+    color: #FFFFFF;
+    background-color: rgba(0, 0, 0, 0.09);
+}
+
+#sidebarCollapse span {
+    margin: 9px;
+    padding: 0px;
+}
+
+.navbar-nav > li.active{
+   color: #FFFFFF;
+   border-radius:4px;
+    background-color: rgba(0, 0, 0, 0.08);
+ }
+
+.navbar-nav > li > a {
+    color: #FFFFFF;
+}
+
+
+.navbar .notification {
+	position: absolute;
+    top: 5px;
+    right: 10px;
+	display: block;
+    font-size: 9px;
+    border: 0px;
+    font-size: 10px;
+    background: #d9534f;
+    min-width: 15px;
+	 text-align: center;
+    padding: 1px 5px;
+    height: 15px;
+    border-radius: 2px;
+    line-height: 14px;
+}
+
+
+ .navbar-nav > li.show .dropdown-menu {
+    transform: translate3d(0, 0, 0);
+	opacity:1;
+	visibility:visible;
+}
+
+
+.dropdown-menu li > a {
+    font-size: 13px;
+    padding: 10px 20px;
+    margin: 0 5px;
+    border-radius: 2px;
+	font-weight: 400;
+    transition: all 150ms linear;
+}
+
+.navbar-nav > .active > a:focus {
+    color: #FFFFFF;
+    background-color: rgba(0, 0, 0, 0.08);
+}
+
+
+.navbar-nav li a {
+    position: relative;
+    display: block;
+    padding: 10px 15px!important;
+}
+
+/*=======================================================
+   main-content navbar-design end
+   ===============================================*/
+
+
+
+/*=======================================================
+   main-content navbar-design start
+   ===============================================*/
+
+
+/*=======================================================
+   main-content inner design like card start
+   ===============================================*/
+
+
+.card {
+    margin: 10px 0;
+}
+
+
+
+.card {
+    display: inline-block;
+    position: relative;
+	border:none!important;
+    width: 100%;
+    margin:15px 0;
+    box-shadow: 0 1px 2px rgb(0 0 0 / 8%);
+    border-radius: 6px;
+    color: rgba(0,0,0, 0.87);
+    background: #fff;
+}
+
+.card-stats .card-header {
+    float: left;
+    text-align: center;
+}
+
+.card .card-header {
+    padding: 15px 20px 0;
+    z-index: 3;
+	background-color:#fff!important;
+	border-bottom:none;
+}
+
+.card .card-footer .stats .material-icons {
+    position: relative;
+    top: 4px;
+    font-size: 12px;
+}
+
+.card-stats .card-header span {
+    font-size: 64px;
+    line-height: 56px;
+    width: 56px;
+    height: 56px;
+}
+
+.icon.icon-naranja {
+    color: #f89a51;
+}
+
+.icon.icon-amarillo {
+    color: #ffd51d;
+}
+.icon.icon-verde {
+    color: #00a886;
+}
+.icon.icon-azul {
+    color: #003263;
+}
+.card .card-footer {
+    margin: 0 7px 0px;
+    padding-top: 10px;
+	background-color:#fff;
+    border-top: 1px solid #eeeeee;
+}
+
+.text-info {
+    color: #03A9F4!important;
+}
+
+.card-stats .card-content {
+    text-align: right;
+    padding-top: 10px;
+}
+
+.card .card-content {
+    padding: 10px 15px;
+    position: relative;
+}
+
+.card .card-content .category {
+    margin-bottom: 0;
+}
+.card .category:not([class*="text-"]) {
+    color: #555555;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.card .card-title:not(.card-calendar .card-title) {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.card-stats .card-title {
+    margin: 0;
+}
+
+.card .card-footer .stats {
+    line-height: 22px;
+    color: #555555;
+    font-size: 12px;
+}
+
+.card .card-footer div {
+    display: inline-block;
+}
+
+.card .card-header-text h4{
+    margin-top: 0;
+    margin-bottom: 3px;
+	font-size:19px;
+    font-weight: 400;
+	color: #222222;
+    text-decoration: none;
+
+}
+
+.tablep > thead > tr > th {
+    border-bottom-width: 1px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #ffffff;
+}
+
+
+.card .card-content {
+    padding: 15px 20px;
+    position: relative;
+}
+
+.espaciocheck{
+    margin-left: 3%;
+}
+.espaciocheckr{
+    margin-right: 3%;
+}
+
+.streamline .sl-primary {
+    border-left-color: #188ae2;
+}
+
+.streamline .sl-item {
+    position: relative;
+    padding-bottom: 12px;
+    border-left: 1px solid #ccc;
+}
+
+
+
+.streamline .sl-item:before {
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: 0;
+    background-color: #ccc;
+    width: 12px;
+    height: 12px;
+    border-radius: 100%;
+}
+.streamline .sl-primary:before, .streamline .sl-primary:last-child:after {
+    background-color: #188ae2;
+}
+
+
+.streamline .sl-danger:before, .streamline .sl-danger:last-child:after {
+    background-color: #ff5b5b;
+}
+
+.streamline .sl-success {
+    border-left-color: #10c469;
+}
+
+.streamline .sl-success:before, .streamline .sl-success:last-child:after {
+    background-color: #10c469;
+}
+
+.streamline .sl-warning {
+    border-left-color: #f9c851;
+}
+
+.streamline .sl-warning:before, .streamline .sl-warning:last-child:after {
+    background-color: #f9c851;
+}
+
+
+
+.streamline .sl-danger {
+    border-left-color: #ff5b5b;
+}
+.streamline .sl-item .sl-content {
+    margin-left: 24px;
+}
+
+.streamline .sl-item .text-muted {
+    color: inherit;
+    opacity: .6;
+	font-size:12px;
+}
+
+.streamline .sl-item p {
+	font-size:14px;
+	color:#333;
+}
+
+
+/*=======================================================
+   main-content inner design like card end
+   ===============================================*/
+
+/* FORMULARIO CON PASOS
+*/
+
+.step {
+  list-style: none;
+  margin: .2rem 0;
+  width: 100%;
+}
+
+.step .step-item {
+  -ms-flex: 1 1 0;
+  flex: 1 1 0;
+  margin-top: 0;
+  min-height: 1rem;
+  position: relative;
+  text-align: center;
+}
+
+.step .step-item:not(:first-child)::before {
+  background: #003263d9; /* Linea del step */
+  content: "";
+  height: 2px;
+  left: -50%;
+  position: absolute;
+  top: 14px;
+  width: 100%;
+}
+
+.step .step-item a {
+  color: #003263; /* Letras del step */
+  display: inline-block;
+  padding: 30px 10px 0;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.step .step-item a::before {
+  background: #00A886; /* Color de puntos del step */
+  border: .1rem solid #fff;
+  border-radius: 50%;
+  content: "";
+  display: block;
+  height: 1.5rem;
+  left: 50%;
+  position: absolute;
+  top: .2rem;
+  transform: translateX(-50%);
+  width: 1.5rem;
+  z-index: 1;
+}
+
+.step .step-item.active a::before {
+  background: #fff;
+  border: .1rem solid #0069d9;
+}
+
+.step .step-item.active ~ .step-item::before {
+  background: #e7e9ed;
+}
+
+.step .step-item.active ~ .step-item a::before {
+  background: #e7e9ed;
+}
+
+/*=============================================
+  footer design start
+  =========================================*/
+
+.footer {
+    border-top: 1px solid #e7e7e7;
+}
+
+footer {
+    padding: 10px 0;
+	position:relative;
+	width:100%;
+	background: #003263;
+
+}
+
+footer ul li {
+    display: inline-block;
+}
+
+footer ul li a {
+    color: inherit;
+    padding: 15px;
+    font-weight: 500;
+    font-size: 12px;
+    text-transform: uppercase;
+    border-radius: 3px;
+    text-decoration: none;
+    position: relative;
+    display: block;
+}
+
+
+footer .copyright {
+    padding: 15px;
+	font-size:14px;
+    margin: 0;
+    color: #ffffff;
+}
+
+
+/*=============================================
+  footer design end
+  =========================================*/
+
+
+
+#sidebar.show-nav,.body-overlay.show-nav{
+	transform:translatex(0%);
+	opacity:1;
+	display:block;
+	visibility:visible;
+	z-index:15;
+}
+
+
+
+
+
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+
+@media only screen and (min-width:992px){
+	#sidebar.active {
+    width:80px;
+	height:100%!important;
+	position:absolute!important;
+	overflow:visible!important;
+	top:0!important;
+	z-index:666;
+	float:left!important;
+    bottom: 0!important;
+}
+
+
+#sidebar.active .sidebar-header h3 span {
+   display:none;
+   transition:all 0.5s ease;
+}
+
+#sidebar.active ul li a span{
+    display:none;
+	transition:all 0.5s ease;
+}
+
+#sidebar.active .dropdown-toggle::after {
+    display:none;
+	transition:all 0.5s ease;
+}
+
+#content {
+    width: calc(100% - 260px);
+    position: relative;
+    float: right;
+    transition: all 0.3s;
+    background-color: #EEEEEE;
+}
+
+#content.active {
+    width: calc(100% - 80px);
+}
+
+#sidebar.active .menu {
+    position: absolute;
+    left: 81px;
+    background-color: white;
+    width: 180px;
+    height: auto;
+    margin: 5px 0;
+    top: 0;
+    border: 1px solid #dcd9d9;
+    z-index: 4;
+}
+}
+
+
+@media only screen and (min-width:992px){
+.dropdown-menu {
+    border: 0;
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 26%);
+	transform: translate3d(0, -20px, 0);
+    visibility: hidden;
+	transition: all 150ms linear;
+    display: block;
+	min-width:15rem;
+	right: 0;
+    left: auto;
+    opacity: 0;
+}
+
+}
+
+
+/*===============small-screen overlay sidebar design media queries==============*/
+
+@media only screen and (max-width:992px){
+#sidebar {
+    position:fixed;
+    top: 0;
+    bottom:0;
+    z-index: 10;
+    width: 260px;
+	transform:translatex(-100%);
+	transition: all 150ms linear;
+	box-shadow:none!important;
+}
+
+.body-overlay{
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	display:none;
+	visibility:hidden;
+	opacity:0;
+	z-index:3;
+	transition: all 150ms linear;
+	background-color:rgba(0,0,0,0.5);
+}
+}
+/*===============small-screen overlay sidebar design media queries==============*/
+
+
+
+
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ---------------------------------------------------
+    ESTILOS DE ALERTAS
+----------------------------------------------------- */
+
+  
+  

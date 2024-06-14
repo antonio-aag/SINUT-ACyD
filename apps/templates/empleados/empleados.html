@@ -1,0 +1,513 @@
+{% extends "plantillaPadre.html" %}
+
+{% block content %}
+
+
+<div class="container-uni">
+  <h1>REGISTRO DE EMPLEADOS</h1>
+  <div class="card text-center " style="width: 100%; padding-bottom: 2%;">
+    <div class="card-body">
+      <p class="subtemas">Datos Personales</p>
+      
+      <br>
+      <form  class="form" id="formulario" action="/registrarEmpleado/" method="POST"> 
+        {% csrf_token %}
+        
+        <div class="mb-3">
+          
+
+          <div class="row">
+            <div class="col-md-3">
+              <label class="custom-label form-label">CURP <a class="iconform" href="https://www.gob.mx/curp/" target="_blank" title="¿No conoces tu CURP?"><i class="material-icons iconform">info</i></a></label>
+              <input type="text" class="custom-input form-control" name="curp" id="curp" maxlength="18" required oninput="actualizarInput()">
+            </div>
+            <div class="col-md-3">
+              <label class="custom-label form-label">Nombre</label>
+              <input type="text" class="custom-input form-control" name="nombre" maxlength="30" required>
+            </div> 
+            <div class="col-md-3">
+              <label  class="custom-label form-label">Primer Apellido</label>
+              <input type="text" class="custom-input form-control" name="ape1" maxlength="30" required>
+            </div>
+          <div class="col-md-3">
+            <label  class="custom-label form-label">Segundo Apellido</label>
+            <input type="text" class="custom-input form-control" name="ape2" maxlength="30">
+          </div>
+        </div>
+        <br>
+
+        <div class="row">
+          <div class="col-md-3">
+            <label class="custom-label form-label">Calle</label>
+            <input type="text" class="custom-input form-control" name="calle" required maxlength="30">
+          </div>
+          <div class="col-md-3">
+            <label class="custom-label form-label">Número</label>
+            <input type="text" class="custom-input form-control" name="numero" required maxlength="5">
+          </div> 
+          <div class="col-md-3">
+            <label for="zona" class="custom-label form-label">Zona</label>
+            <select id="zona" name="zona" class="custom-input form-select" required>
+              <option selected>Seleccione...</option>
+              <option value="1">Rural</option>
+              <option value="2">Urbana</option>
+            </select>
+          </div>
+        <div class="col-md-3">
+           <label  class="custom-label form-label">Código Postal</label>
+           <input type="number" class="custom-input form-control" name="cp" required maxlength="5">
+        </div>
+      </div>
+      <br>
+          <div class="row">
+            <div class="col-md-3">
+              <label  class="custom-label form-label">Teléfono de casa</label>
+              <input type="number" maxlength="10" class="custom-input form-control" name="tel" required >
+            </div>
+            <div class="col-md-3">
+              <label  class="custom-label form-label">Celular</label>
+              <input type="number" class="custom-input form-control" name="cel" required maxlength="10">
+            </div>
+              <div class="col-md-3">
+                <label  class="custom-label form-label">Correo</label>
+                <input type="email" class="custom-input form-control" name="correo" required maxlength="80">
+              </div>
+
+              <div class="col-md-3">
+                <label for="pais-select" class="custom-label form-label">Nacionalidad</label>
+                <select id="pais-select" name="nacionalidad" class="custom-input form-select" required>
+                  <option selected disabled="true">Seleccione...</option>
+
+                </select>
+            </div>
+          </div>
+          <br>
+     
+          <div class="row">
+            <div class="col-md-3">
+            <label for="estado-select" class="custom-label custom-label form-label">Estado de Nacimiento</label>
+            <select id="estado-select" name="estadoNacimiento" class="custom-input form-select" required>
+              <option selected disabled="true">Seleccione...</option>
+               {{ estado_form.as_p }}
+
+            </select>
+          </div>
+            <div class="col-md-3">
+                <label for="municipio-select" class="custom-label custom-label form-label">Municipio de Nacimiento</label>
+                <select id="municipio-select" name="mpioNacimiento" class="custom-input form-select" required>
+                  <option selected disabled="true">Seleccione...</option>
+                    {{ municipio_form.as_p }}
+                </select>
+            </div>
+
+            <div class="col-md-3">
+                <label for="estadoCivil" class="custom-label form-label">Estado Civil</label>
+                <select id="estadoCivil" name="estadoCivil" class="custom-input form-select" required>
+                  <option selected disabled="true">Seleccione...</option>
+                  <option value="1">Soltero (a)</option>
+                  <option value="2">Casado (a)</option>
+                  <option value="3">Viudo (a)</option>
+                  <option value="4">Divorciado (a)</option>
+                  <option value="5">Unión libre</option>
+                  <option value="6">No especificar</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+              <label for="sexo" class="custom-label form-label">Sexo</label>
+              <select id="sexo" name="sexo" class="custom-input form-select" required>
+                <option selected disabled="true">Seleccione...</option>
+                <option value="1">Femenino</option>
+                <option value="2">Masculino</option>
+              </select>
+                
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-md-3">
+          <label for="hijos" class="custom-label form-label">¿Tienes hijos?</label>
+              <select id="hijos" name="hijos" class="custom-input form-select" required>
+                <option selected disabled="true">Seleccione...</option>
+                <option value="1">Si</option>
+                <option value="0">No</option>
+              </select>
+            </div>
+          </div>
+
+
+          <p class="subtemas">Datos Medicos</p>
+          <div class="row">
+          <div class="col-md-3">
+            <label  class="custom-label form-label">Peso(kg)</label>
+            <input type="number" class="custom-input form-control" name="peso" required>
+          </div>
+
+          <div class="col-md-3">
+            <label  class="custom-label form-label">Estatura(cm)</label>
+            <input type="number" class="custom-input form-control" name="estatura" required>
+          </div>
+        
+
+          
+          <div class="col-md-3">
+            <label for="tipoSangre" class="custom-label form-label">Tipo De Sangre</label>
+            <select id="tipoSangre" name="tipoSangre" class="custom-input form-select" required>
+              <option selected disabled="true">Seleccione...</option>
+              <option value="1">A+</option>
+              <option value="2">A-</option>
+              <option value="3">B+</option>
+              <option value="4">B-</option>
+              <option value="5">AB+</option>
+              <option value="6">AB-</option>
+              <option value="7">O+</option>
+              <option value="8">O-</option>
+            </select>
+      </div>
+
+      <div class="col-md-3">
+      <label for="tipoSangre" class="custom-label form-label">Selecciona si cuentas con familiares: </label><br>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input check" type="checkbox" id="hipertensos" name="hipertensos" value="1">
+          <label class="custom-label form-check-label" for="hipertensos">Hipertensos</label>
+
+        </div>
+     
+        <div class="form-check form-check-inline">
+          <input class="form-check-input check" type="checkbox" id="diabeticos" name="diabeticos" value="1">
+          <label class="custom-label form-check-label" for="diabeticos">Diabéticos</label>
+
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input check" type="checkbox" id="cardiacos" name="cardiacos" value="1">
+          <label class="custom-label form-check-label" for="cardiacos">Cardiacos</label>
+
+        </div>
+      </div>
+    
+          
+            <p class="subtemas">Datos Institucionales</p>
+
+
+          <div class="row">
+            <div class="col-md-3">
+              <label class="form-label" for="numeroEmpleado">Numero de empleado</label>
+                <input type="text" class="form-control" id="numeroEmpleado" name="numeroEmpleado"  maxlength="12"  autofocus required>
+              </div>
+          
+          
+            <div class="col-md-3">
+              <label class="form-label" for="fechaAlta">Fecha de alta</label>
+              <input type="date" class="form-control" id="fechaAlta" name="fechaAlta" autofocus required>
+              </div>
+              
+               
+
+            <div class="col-md-3">
+              <label class="form-label" for="idTitulo">ID Titulo</label>
+              <select type="text" class="form-control" id="idTitulo" name="idTitulo"  autofocus required>
+                <option selected disabled="true">Seleccione...</option>
+                {% for titulo in titulos %}
+                <option value="{{ titulo.idTitulo }}">{{ titulo.nombre }}</option>
+                {% endfor %}
+            </select>
+            </div>
+
+            <div class="col-md-3">
+              <label class="form-label" for="rfc">RFC</label>
+              <input type="text" class="form-control" id="rfc" name="rfc" autofocus required>
+            </div>
+        </div>
+        <br>
+
+        <div class="row">
+           
+            <div class="col-md-3">
+              <label class="form-label" for="idPuestoEmpleado">ID Puesto Empleado</label>
+              <select type="text" class="form-control" id="idPuestoEmpleado" name="idPuestoEmpleado"  autofocus required>
+                <option selected disabled="true">Seleccione...</option>
+                {% for puesto in puestos %}
+                <option value="{{ puesto.idPuestoEmpleado }}">{{ puesto.nombrePuesto }}</option>
+                {% endfor %}
+            </select>
+            </div>
+            <div class="col-md-3">
+              <label class="form-label" for="idArea">ID Puesto Area</label>
+              <select type="text" class="form-control" id="idArea" name="idArea"  autofocus required>
+                <option selected disabled="true">Seleccione...</option>
+                {% for area in areas %}
+                <option value="{{ area.idArea }}">{{ area.nombreArea }}</option>
+                {% endfor %}
+            </select>
+            </div>
+          </div>
+          <br>
+      </div>
+
+
+
+
+      <p class="subtemas">Datos Institucionales</p>
+                        <div class="row">
+                        <div class="col-md-3">
+                          <label  class="custom-label form-label">Acta de Nacimiento</label>
+                          <input type="file" class="custom-input form-control" name="acta" id="acta" accept=".pdf" enctype="multipart/form-data" re>
+                         </div>
+
+                         <div class="col-md-3">
+                          <label  class="custom-label form-label">Credencial de elector </label>
+                          <input type="file" class="custom-input form-control" name="credencial" id="credencial" accept=".pdf">
+                         </div>
+
+                         <div class="col-md-3">
+                          <label  class="custom-label form-label">Carta de antedecentes Penales</label>
+                          <input type="file" class="custom-input form-control" name="Cartpen" id="Cartpen" required accept=".pdf">
+                         </div>
+
+                         <div class="col-md-3">
+                          <label  class="custom-label form-label">Recomendacion Laboral 2</label>
+                          <input type="file" class="custom-input form-control" name="Rlab" id="Rlab" required accept=".pdf">
+                         </div>
+                        </div>
+                        <br>
+
+                        <div class="row">
+                          <div class="col-md-3">
+                            <label  class="custom-label form-label">Comprobante de domicilio</label>
+                            <input type="file" class="custom-input form-control" name="ComDomi" id="ComDomi" accept=".pdf" enctype="multipart/form-data" re>
+                           </div>
+  
+                           <div class="col-md-3">
+                            <label  class="custom-label form-label">Cartilla SMN </label>
+                            <input type="file" class="custom-input form-control" name="smn" id="smn" accept=".pdf">
+                           </div>
+  
+                           <div class="col-md-3">
+                            <label  class="custom-label form-label">Antedecentes Disciplinarios</label>
+                            <input type="file" class="custom-input form-control" name="disciplinarios" id="disciplinarios" required accept=".pdf">
+                           </div>
+
+                           <div class="col-md-3">
+                            <label  class="custom-label form-label">CURP</label>
+                            <input type="file" class="custom-input form-control" name="curpDoc" required accept=".pdf">
+                           </div>
+                          </div>
+                          <br>
+
+                          <div class="row">
+                            <div class="col-md-3">
+                              <label  class="custom-label form-label">Licencia de Conducir</label>
+                              <input type="file" class="custom-input form-control" name="LicCond" id="LicCond" accept=".pdf" enctype="multipart/form-data" re>
+                             </div>
+    
+                             <div class="col-md-3">
+                              <label  class="custom-label form-label">Cartilla SMN </label>
+                              <input type="file" class="custom-input form-control" name="smn" id="smn" accept=".pdf">
+                             </div>
+                            </div>
+                            <br>
+                          
+                        
+
+
+      <a href="/tablaEmpleados/" class="btns btn btn-primary" >Listado de Empleados</a>
+          <button type="submit" class="btnr btn btn-primary">Guardar</button>
+      </form>
+          </div>
+        </div>
+ </div>
+
+                        
+        
+<script>
+  const checkbox = document.getElementById('estatus');
+
+checkbox.addEventListener('change', function() {
+  if (this.checked) {
+    this.value = '1';// El checkbox está seleccionado, asignar valor 1
+  } else {
+    this.value = '0';// El checkbox no está seleccionado, asignar valor 0
+  }
+});
+
+  </script>
+
+
+<script>
+  //Para pais, estado y municipio de nacimiento.
+$(document).ready(function() {
+    // Cargar los países
+    $.ajax({
+        url: '{% url "Aspirante:get_paises" %}',
+        dataType: 'json',
+        success: function(data) {
+            $.each(data, function(index, pais) {
+                $('#pais-select').append('<option value="' + pais.idPais + '">' + pais.nombre + '</option>');
+            });
+        }
+    });
+    //Lenar el combo de estados en el domicilio actual
+    $.ajax({
+        url: '{% url "Aspirante:get_estados2" %}',
+        dataType: 'json',
+        success: function(data) {
+            $.each(data, function(index, estado) {
+                $('#estadoD_select').append('<option value="' + estado.idEstado + '">' + estado.nombreEstado + '</option>');
+            });
+        }
+    });
+
+     //Lenar el combo de estados en los estudios de bachillerato
+     $.ajax({
+        url: '{% url "Aspirante:get_estados2" %}',
+        dataType: 'json',
+        success: function(data) {
+            $.each(data, function(index, estado) {
+                $('#estadoE').append('<option value="' + estado.idEstado + '">' + estado.nombreEstado + '</option>');
+            });
+        }
+    });
+
+    $.ajax({
+        url: '{% url "Aspirante:get_uni" %}',
+        dataType: 'json',
+        success: function(data) {
+            $.each(data, function(index, uni) {
+                $('#cualuni').append('<option value="' + uni.idUniversidad + '">' + uni.nombre + '</option>');
+            });
+        }
+    });
+
+    // Cargar los estados cuando se selecciona un país
+    $('#pais-select').change(function() {
+        var idPais = $(this).val();
+        $('#estado-select').html('<option value="">Selecciona un estado</option>');
+        if (idPais) {
+            $.ajax({
+                url: '{% url "Aspirante:get_estados" 0 %}'.replace('0', idPais),
+                dataType: 'json',
+                success: function(data) {
+                    $.each(data, function(index, estado) {
+                        $('#estado-select').append('<option value="' + estado.idEstado + '">' + estado.nombreEstado + '</option>');
+                    });
+                }
+            });
+        }
+    });
+
+    // Cargar los municipios cuando se selecciona un estado de nacimiento
+    $('#estado-select').change(function() {
+        var idEstado = $(this).val();
+        $('#municipio-select').html('<option value="">Selecciona un municipio</option>');
+        if (idEstado) {
+            $.ajax({
+                url: '{% url "Aspirante:get_municipios" 0 %}'.replace('0', idEstado),
+                dataType: 'json',
+                success: function(data) {
+                    $.each(data, function(index, municipio) {
+                        $('#municipio-select').append('<option value="' + municipio.idMunicipio + '">' + municipio.nombreMunicipio + '</option>');
+                    });
+                }
+            });
+        }
+    });
+
+    // Cargar los municipios cuando se selecciona un estado de domicilioActual
+    $('#estadoD_select').change(function() {
+        var idEstado = $(this).val();
+        $('#municipioD_select').html('<option value="">Selecciona un municipio</option>');
+        if (idEstado) {
+            $.ajax({
+                url: '{% url "Aspirante:get_municipios" 0 %}'.replace('0', idEstado),
+                dataType: 'json',
+                success: function(data) {
+                    $.each(data, function(index, municipio) {
+                        $('#municipioD_select').append('<option value="' + municipio.idMunicipio + '">' + municipio.nombreMunicipio + '</option>');
+                    });
+                }
+            });
+        }
+    });
+
+    // Cargar municipios cuando seleccione estado de bachillerato
+        $('#estadoE').change(function() {
+        var idEstado = $(this).val();
+        $('#mpioE').html('<option value="">Selecciona un municipio</option>');
+        if (idEstado) {
+            $.ajax({
+                url: '{% url "Aspirante:get_municipios" 0 %}'.replace('0', idEstado),
+                dataType: 'json',
+                success: function(data) {
+                    $.each(data, function(index, municipio) {
+                        $('#mpioE').append('<option value="' + municipio.idMunicipio + '">' + municipio.nombreMunicipio + '</option>');
+                    });
+                }
+            });
+        }
+    });
+
+    //Cargar las escuelas de procedencia cuando se seleccione un municipio
+    $('#mpioE').change(function() {
+        var idMunicipio = $(this).val();
+        $('#escuelaProcedencia').html('<option value="">Selecciona una escuela</option>');
+        if (idMunicipio) {
+            $.ajax({
+                url: '{% url "Aspirante:get_escuelas" 0 %}'.replace('0', idMunicipio),
+                dataType: 'json',
+                success: function(data) {
+                    $.each(data, function(index, escuela) {
+                        $('#escuelaProcedencia').append('<option value="' + escuela.idEscuelaProcedencia + '">' + escuela.nombreEscuela + '</option>');
+                    });
+                }
+            });
+        }
+    });
+
+  $('#escuelaProcedencia').change(function() {
+      var idEscuelaProcedencia = $(this).val();
+      $('#calleE').val(''); // Limpiar el input
+      $('#numeroE').val(''); // Limpiar el input
+      $('#cpE').val(''); // Limpiar el input
+
+      if (idEscuelaProcedencia) {
+        $.ajax({
+          url: '{% url "Aspirante:get_escuelaid" 0 %}'.replace('0', idEscuelaProcedencia),
+          dataType: 'json',
+          success: function(data) {
+            if (data.length > 0) {
+              $('#calleE').val(data[0].direccionEscuela);
+              $('#numeroE').val(data[0].telefonoEscuela);
+              $('#cpE').val(data[0].claveEscuela);
+              $('#calleE').prop('disabled', true); // Habilitar el input
+              $('#numeroE').prop('disabled', true);
+              $('#cpE').prop('disabled', true);
+            } 
+          }
+        });
+      } else {
+        $('#calleE').prop('disabled', true); // Deshabilitar el input
+      }
+    });
+
+      //Cargar las colonias cuando se seleccione el municipio
+    $('#municipioD_select').change(function() {
+        var idMunicipio = $(this).val();
+        $('#colonia-select').html('<option value="">Selecciona un municipio</option>');
+        if (idMunicipio) {
+            $.ajax({
+                url: '{% url "Aspirante:get_colonias" 0 %}'.replace('0', idMunicipio),
+                dataType: 'json',
+                success: function(data) {
+                    $.each(data, function(index, colonia) {
+                        $('#colonia-select').append('<option value="' + colonia.idColonia + '">' + colonia.nombreColonia + '</option>');
+                    });
+                }
+            });
+        }
+    });
+});
+</script>
+
+
+  
+{% endblock %}
+

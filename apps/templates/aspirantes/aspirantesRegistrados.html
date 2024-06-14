@@ -1,0 +1,140 @@
+{% extends "plantillaPadre.html" %}
+
+{% block content %}
+
+<style>
+  .visible {
+  display: block;
+}
+
+.oculto {
+  display: none;
+}
+</style>
+
+<div class="row">|
+    <p class="subtemas"><i class="material-icons iconhr" >how_to_reg</i> Aspirantes Registrados</p>
+</div>
+<div style="text-align: center;" class="row" >
+  <div class="col-sm-12">
+    <span class="text-align">Filtrar por: </span> 
+    <label class="espaciocheck">
+      
+      <input type="radio" class="form-check-input " id="optionFichas"  name="option" value="fichas" checked> Proceso de Fichas
+    </label>
+    <label class="espaciocheck">
+      <input type="radio" class="form-check-input " id="optionFechas" name="option" value="fechas"> Rango de Fechas
+    </label>
+  </div>
+</div>
+<br>
+<form id="filtro-form" method="GET" action="{% url 'Aspirante:aspirantesRegistradosFiltro' %}">
+    {% csrf_token %} 
+      <div class="row">
+        <div class="col-sm-4"></div>
+        <div id="fichas" class="visible col-sm-4 ">  
+
+          <div class="">
+              
+              <select id="ficha" name="ficha" onchange="this.form.submit()" class="custom-input form-select" required>
+              {% for ficha in lfichas %}
+                      <option value="{{ ficha.idProcesoFicha }}" {% if ficha.idProcesoFicha == ultimaFicha %}selected{% endif %} >
+                          {{ ficha.fechaInicioFicha }} - {{ ficha.fechaFinFicha }}
+                      </option>
+                  {% endfor %}
+              </select>
+          </div>
+        </div>
+      </div>  
+      
+        <div id="fechas" class="oculto">
+          <div class="row"> 
+            <div class="col-sm-2"></div>
+            <div class="col-sm-4">
+              <span>Fecha inicio</span>
+              <input type="date" class="form-control" id="fechaInicio" name="fechaInicio" autofocus required>
+            </div>
+            <div class="col-sm-4">
+              <span>Fecha Fin</span>
+              <input type="date" class="form-control" id="fechaFin" name="fechaFin"  autofocus required>
+            </div>
+            <div class="col-sm-2">
+                <button onclick="this.form.submit()" type="button" class="btns btn" style="margin-top: 12%;" >Buscar</button>
+            </div>
+          </div>
+        </div> 
+</form>
+
+
+<div class=" table-responsive">
+    <table class="tablep table">
+      <thead>
+        <tr>
+          <th scope="col">Carrera</th>
+          <th scope="col">Hombres</th>
+          <th scope="col">Mujeres</th>
+          <th scope="col">Total</th>
+          <th scope="col">Porciento</th>
+          <th scope="col">No Registrados</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        {% for aspirante in laspirantes %}
+        <tr>
+            <td>{{aspirante.nombreCarrera}}</td>
+            <td>{{aspirante.cm}}</td>
+            <td>{{aspirante.cf}}</td>
+            <td>{{aspirante.ts}}</td>
+            <td>{{aspirante.totalmf|floatformat:2}} %</td>
+            <td>{{aspirante.nr}}</td>
+            
+        </tr>
+        {% endfor %}
+        <tr>
+            <td>Total</td>
+            <td>{{ tm }}</td>
+            <td>{{ tf }}</td>
+            <td>{{ totalRegistrados }}</td>
+            <td>100 %</td>
+            <td>{{ t }}</td>
+        </tr>
+       </tbody>
+      
+    </table>
+  </div>
+
+
+
+<script>
+const radios = document.querySelectorAll('input[name="option"]');
+const fichas = document.getElementById('fichas');
+const fechas = document.getElementById('fechas');
+
+radios.forEach(radio => {
+  radio.addEventListener('change', () => {
+    if (radio.value === 'fichas') {
+      fichas.classList.add('visible');
+      fichas.classList.remove('oculto');
+      fechas.classList.remove('visible');
+      fechas.classList.add('oculto');
+    } else {
+      fechas.classList.add('visible');
+      fechas.classList.remove('oculto');
+      fichas.classList.remove('visible');
+      fichas.classList.add('oculto');
+    }
+  });
+});
+</script>
+
+<script>
+  //Este script es para que el campo de fecha Fin cargue con la fecha del hoy siempre por default
+  const today = new Date().toISOString().split('T')[0];
+  const fechaFinInput = document.getElementById('fechaFin');
+  fechaFinInput.value = today;
+</script>
+
+
+
+{% endblock %}
