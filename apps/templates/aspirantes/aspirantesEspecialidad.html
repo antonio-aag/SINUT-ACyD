@@ -1,0 +1,72 @@
+{% extends "plantillaPadre.html" %}
+
+{% block content %}
+
+<div class="row">
+    <p class="subtemas"><i class="material-icons iconhr" >square_foot</i> Reporte de aspirantes por especialidad</p>
+</div>
+
+<form id="filtro-form" method="GET" action="{% url 'Aspirante:aspirantesEspecialidadFiltro' %}">
+    {% csrf_token %} 
+      <div class="row">
+        <div class="col-sm-2"></div>
+        <div id="fichas" class="col-sm-4 ">  
+            <span>Periodo de Inicio a clases</span>
+              <select  id="ficha" name="ficha" onchange="this.form.submit()" class="custom-input form-select" required>
+              {% for periodo in lperiodos %}
+                      <option value="{{ periodo.idPeriodo }}" {% if periodo.idPeriodo == periodoInicioClases %}selected{% endif %} >
+                        {{ periodo.fechaInicio|date:'N'|capfirst }} - {{ periodo.fechaFin|date:'N Y'|capfirst }}
+                      </option>
+                  {% endfor %}
+              </select>
+        </div>
+        <div id="director" class="col-sm-4 ">  
+            <span>Director</span>
+            
+            <select  id="director" name="director" onchange="this.form.submit()" class="custom-input form-select" required>
+                <option selected disabled="true">Seleccione un director...</option>
+                {% for empleado in lempleados %}
+                    <option value="{{ empleado.idEmpleado }}" >
+                      {{ empleado.idTitulo.abreviatura }} {{ empleado.idPersona.nombre }} {{ empleado.idPersona.ape1 }} {{ empleado.idPersona.ape2 }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+      </div>
+</form>
+
+<div class=" table-responsive">
+    <table class="tablep table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nombre</th>
+          
+          <th scope="col">Primer Apellido</th>
+          <th scope="col">Segundo Apellido</th>
+          <th scope="col">Especialidad</th>
+          <th scope="col">Carrera</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        {% for aspirante in laspirantes %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{aspirante.idPersona.nombre}}</td>
+           
+            <td>{{aspirante.idPersona.ape1}}</td>
+            <td>{{aspirante.idPersona.ape2}}</td>
+            <td>{{aspirante.especialidadPrepa_view }}</td>
+            <td>{{aspirante.encuesta_set.first.idCarrera.nombreCarrera}}</td>
+            
+        </tr>
+        {% endfor %}
+        
+       </tbody>
+      
+    </table>
+  </div>
+
+
+{% endblock %}

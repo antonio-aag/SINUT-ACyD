@@ -1,0 +1,261 @@
+{% load static %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+        <title>SINUT</title>
+	    <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href='{% static "css/bootstrap.min.css" %}'>
+
+
+	    <!----css3---->
+        <link rel="stylesheet" href='{% static "css/custom.css" %}'>
+		<!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+<!-- SWEETALERT IMPORTACIÓN -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css">
+
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<!--google material icon-->
+        <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+	  
+	  <style>
+	  
+	  
+	  
+	  
+	  </style>
+  </head>
+  <body>
+
+
+
+
+<div class="wrapper">
+
+
+<div class="body-overlay"></div>
+
+
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3><span>SINUT</span></h3>
+            </div>
+            <ul class="list-unstyled components">
+			<li  class="active">
+                    <a href="#" class="dashboard"><i class="material-icons">dashboard</i><span>Inicio</span></a>
+                </li>
+
+		      <div class="small-screen navbar-display">
+
+
+              
+				 <li  class="d-lg-none d-md-block d-xl-none d-sm-block">
+                    <a href="#"><i class="material-icons">person</i><span>user</span></a>
+                </li>
+
+				<li  class="d-lg-none d-md-block d-xl-none d-sm-block">
+                    <a href="#"><i class="material-icons">settings</i><span>setting</span></a>
+                </li>
+				</div>
+
+
+          
+				
+				<li class="">
+                    <a href="#"><i class="material-icons">aspect_ratio</i><span>Procesos</span></a>
+                </li>
+
+
+
+               <li class="">
+                    <a href="#"><i class="material-icons">date_range</i><span>Reportes</span></a>
+                </li>
+				
+				 <li  class="">
+                    <a href="#"><i class="material-icons">person</i><span>Mis Datos</span></a>
+                </li>
+				
+				<li  class="">
+                    <a href="#"><i class="material-icons">power_settings_new</i><span>Cerrar Sesión</span></a>
+                </li>
+				
+
+
+
+
+            </ul>
+
+
+        </nav>
+
+
+
+        <!-- Page Content  -->
+
+    <div id="content">
+
+		<div class="top-navbar">
+            <nav class="navbar navbar-expand-lg">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="d-xl-block d-lg-block d-md-mone d-none">
+                        <span class="material-icons">arrow_back_ios</span>
+                    </button>
+
+					<a class="navbar-brand" href="#">  </a>
+
+                    <button class="d-inline-block d-lg-none ml-auto more-button" type="button" data-toggle="collapse"
+					data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="material-icons">more_vert</span>
+                    </button>
+
+                    <div class="collapse navbar-collapse d-lg-block d-xl-block d-sm-none d-md-none d-none" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <!--
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+								<span class="material-icons">person</span>
+								</a>
+                            </li>
+							<li class="nav-item">
+                                <a class="nav-link" href="#">
+								<span class="material-icons">settings</span>
+								</a>
+                            </li>-->
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+	    </div>
+
+
+        <div class="main-content">
+            
+            {% if messages %}
+            <div id="messages-data" style="display: none;">
+              {% for message in messages %}
+                <div class="message" data-level="{{ message.level }}" data-text="{{ message|escapejs }}"></div>
+              {% endfor %}
+            </div>
+            <script>
+              document.addEventListener('DOMContentLoaded', function() {
+                var messageElements = document.querySelectorAll('#messages-data .message');
+                messageElements.forEach(function(element) {
+                  var level = element.getAttribute('data-level');
+                  var text = element.getAttribute('data-text');
+                  
+                  var swalOptions = {
+                    text: text,
+                    title: "",
+                    icon: ""
+                  };
+          
+                  if (level == "{{ DEFAULT_MESSAGE_LEVELS.SUCCESS }}") {
+                    swalOptions.title = "¡Felicitaciones!";
+                    swalOptions.icon = "success";
+                    swalOptions.timer =  2500
+                  } else if (level == "{{ DEFAULT_MESSAGE_LEVELS.WARNING }}") {
+                    swalOptions.title = "¡Advertencia!";
+                    swalOptions.icon = "warning";
+                    swalOptions.timer =  2500
+                  } else if (level == "{{ DEFAULT_MESSAGE_LEVELS.ERROR }}") {
+                    swalOptions.title = "¡Error!";
+                    swalOptions.icon = "error";
+                    swalOptions.timer =  2500
+                  } else {
+                    swalOptions.title = "¡Mensaje!";
+                    swalOptions.icon = "info";
+                  }
+          
+                  Swal.fire(swalOptions);
+                });
+              });
+            </script>
+          {% endif %}             
+            
+     
+
+
+ 
+                {% block content %}
+				
+				{% endblock %}
+				
+				<div class="espacio"></div>
+				
+                <div class="row">
+                    <footer class="footer">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-md-6">
+
+                                        </div>
+                                        <div class="col-md-6">
+                                         <p class="copyright d-flex"> 2023 </p>
+                                        </div>
+                                    </div>
+                                </div>
+                    </footer>
+                </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+     <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+   <script src='{% static "js/jquery-3.3.1.slim.min.js" %}'></script>
+   <script src='{% static "js/popper.min.js" %}'></script>
+   <script src='{% static "js/bootstrap.min.js" %}'></script>
+   <script src='{% static "js/jquery-3.3.1.min.js" %}'></script>
+
+  <!-- Para popover--> 
+  <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+
+
+  <script type="text/javascript">
+  $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+				$('#content').toggleClass('active');
+            });
+
+			 $('.more-button,.body-overlay').on('click', function () {
+                $('#sidebar,.body-overlay').toggleClass('show-nav');
+            });
+
+        });
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+  </body>
+
+  </html>
+
+

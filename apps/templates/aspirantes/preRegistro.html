@@ -1,0 +1,825 @@
+{% extends "plantillaPadre.html" %}
+ 
+{% block content %}
+<script>
+  function actualizarInput() {
+    const username = document.getElementById('curp').value;
+    const nameValue = username.substring(0, 10);
+    document.getElementById('nombreUser').value = nameValue;
+}
+</script>
+<script>
+  /*var popOverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+  var popOverList = popOverTriggerList.map(function (popoverTriggerEl){
+    return new bootstrap.Popover(popoverTriggerEl)
+  })
+  $(function () {
+  $('[data-toggle="popover"]').popover({
+    trigger: 'focus'
+  })
+})*/
+</script>
+
+{% load static%}
+<script src='{% static "js/preRegistro.js" %}'></script>
+
+                <div class="row">
+                            <form class="row g-3" action="registrarAspirante/" method="post" enctype="multipart/form-data" onsubmit="return validarForm()">
+                                {% csrf_token %}
+                                <div class="col-md-12">
+                                   <p class="subtemas"><i class="material-icons iconhr">person</i> Datos Personales</p>
+                                  </div>
+
+                               <div class="col-md-3">
+                                <label class="custom-label form-label">CURP <a class="iconform" href="https://www.gob.mx/curp/" target="_blank" title="¿No conoces tu CURP?"><i class="material-icons iconform">info</i></a></label>
+                                <input type="text" class="custom-input form-control" name="curp" id="curp" maxlength="18" required oninput="actualizarInput()">
+                              </div>
+                              <div class="col-md-3">
+                                <label class="custom-label form-label">Nombre</label>
+                                <input type="text" class="custom-input form-control" name="nombre" maxlength="30" required>
+                              </div> 
+                              <div class="col-md-3">
+                                <label  class="custom-label form-label">Primer Apellido</label>
+                                <input type="text" class="custom-input form-control" name="ape1" maxlength="30" required>
+                              </div>
+                                  <div class="col-md-3">
+                                <label  class="custom-label form-label">Segundo Apellido</label>
+                                <input type="text" class="custom-input form-control" name="ape2" maxlength="30">
+                              </div>
+
+                              <div class="col-md-3">
+                                <label  class="custom-label form-label">Teléfono de casa</label>
+                                <input type="number" maxlength="10" class="custom-input form-control" name="tel" required >
+                              </div>
+                              <div class="col-md-3">
+                                <label  class="custom-label form-label">Celular</label>
+                                <input type="number" class="custom-input form-control" name="cel" required maxlength="10">
+                              </div>
+                              <div class="col-md-3">
+                                <label  class="custom-label form-label">Correo</label>
+                                <input type="email" class="custom-input form-control" name="correo" required maxlength="80">
+                              </div>
+                                <div class="col-md-3">
+                                    <label for="sexo" class="custom-label form-label">Sexo</label>
+                                    <select id="sexo" name="sexo" class="custom-input form-select" required>
+                                      <option selected disabled="true">Seleccione un sexo</option>
+                                      <option value="1">Femenino</option>
+                                      <option value="2">Masculino</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label for="pais-select" class="custom-label form-label">Nacionalidad</label>
+                                    <select id="pais-select" name="nacionalidad" class="custom-input form-select" required>
+                                      <option selected disabled="true">Seleccione una nacionalidad</option>
+
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                <label for="estado-select" class="custom-label custom-label form-label">Estado de Nacimiento</label>
+                                <select id="estado-select" name="estadoNacimiento" class="custom-input form-select" required>
+                                  <option selected disabled="true">Seleccione un esado de nacimiento</option>
+                                   {{ estado_form.as_p }}
+
+                                </select>
+                              </div>
+                                <div class="col-md-4">
+                                    <label for="municipio-select" class="custom-label custom-label form-label">Municipio de Nacimiento</label>
+                                    <select id="municipio-select" name="mpioNacimiento" class="custom-input form-select" required>
+                                      <option selected disabled="true">Seleccione un municipio de nacimiento</option>
+                                        {{ municipio_form.as_p }}
+                                    </select>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label for="estadoCivil" class="custom-label form-label">Estado Civil</label>
+                                    <select id="estadoCivil" name="estadoCivil" class="custom-input form-select" required>
+                                      <option selected disabled="true">Seleccione un estado civil</option>
+                                      <option value="1">Soltero (a)</option>
+                                      <option value="2">Casado (a)</option>
+                                      <option value="3">Viudo (a)</option>
+                                      <option value="4">Divorciado (a)</option>
+                                      <option value="5">Unión libre</option>
+                                      <option value="6">No especificar</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                  <label for="hijos" class="custom-label form-label">¿Tienes hijos?</label>
+                                  <select id="hijos" name="hijos" class="custom-input form-select" required>
+                                    <option selected disabled="true">Seleccione una opción</option>
+                                    <option value="1">Si</option>
+                                    <option value="0">No</option>
+                                  </select>
+                              </div>
+                                <div class="col-md-4">
+                                  <label for="tipoSangre" class="custom-label form-label">Selecciona si te identificas con algúna identidad cultural: </label><br>
+                                    <div class="form-check form-check-inline">
+                                      <input class="form-check-input check" type="checkbox" id="indigena" name="indigena" value="1">
+                                      <label class="custom-label form-check-label" for="indigena">Indigena</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                      <input class="form-check-input check" type="checkbox" id="afroamericano" name="afroamericano" value="1">
+                                      <label class="custom-label form-check-label" for="afroamericano">Afroamericano</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                      <input class="form-check-input check" type="checkbox" id="migrante" name="migrante" value="1">
+                                      <label class="custom-label form-check-label" for="migrante">Migrante</label>
+                                    </div>
+                                  </div>
+
+                                 
+
+                               <div class="col-md-12">
+
+                                   <p class="subtemas"> <i class="material-icons iconhr">home</i> Domicilio Actual</p>
+
+                              </div>
+
+                               <div class="col-md-4">
+                                <label class="custom-label form-label">Calle</label>
+                                <input type="text" class="custom-input form-control" name="calle" required maxlength="30">
+                              </div>
+                              <div class="col-md-2">
+                                <label class="custom-label form-label">Número</label>
+                                <input type="text" class="custom-input form-control" name="numero" required maxlength="5">
+                              </div>
+                               <div class="col-md-2">
+                                <label  class="custom-label form-label">Código Postal</label>
+                                <input type="number" class="custom-input form-control" name="cp" required maxlength="5">
+                              </div>
+
+                                <div class="col-md-4">
+                                    <label for="zona" class="custom-label form-label">Zona</label>
+                                    <select id="zona" name="zona" class="custom-input form-select" required>
+                                      <option selected>Seleccione una zona</option>
+                                      <option value="1">Rural</option>
+                                      <option value="2">Urbana</option>
+                                    </select>
+                                 </div>
+
+
+
+                              <div class="col-md-4">
+                                <label for="estadoD_select" class="custom-label form-label">Estado</label>
+                                <select id="estadoD_select" name="estado" class="custom-input form-select" required>
+                                  <option selected disabled="true">Seleccione un estado</option>
+                                  {{ estado_form.as_p }}
+                                </select>
+                              </div>
+
+                                <div class="col-md-4">
+                                    <label for="municipioD_select" class="custom-label form-label">Municipio</label>
+                                    <select id="municipioD_select" name="mpio" class="custom-input form-select" required>
+                                      <option selected disabled="true">Seleccione un municipio</option>
+                                     {{ municipio_form.as_p }}
+                                    </select>
+                                </div>
+
+                                <div class="col-md-4">
+                                  <label  class="custom-label form-label">Colonia</label>
+                                  <select id="colonia-select" name="colonia" class="custom-input form-select" required>
+                                    <option value="" selected disabled="true">Selecciona una colonia</option>
+                                    {{ colonia_form.as_p }}
+                                  </select>
+                              </div>
+
+
+
+                                 <div class="col-md-12">
+                                   <p class="subtemas"> <i class="material-icons iconhr" >school</i> Estudios de Bachillerato</p>
+                                 </div>
+
+                                <div class="col-md-4">
+                                <label for="estadoE" class="custom-label form-label">Estado</label>
+                                <select id="estadoE" name="estadoE" class="custom-input form-select" required>
+                                  <option selected disabled="true">Seleccione un estado</option>
+                                  {% for e in estadosP %}
+                                         <option>{{e.nombreEstado}}</option>
+                                  {% endfor %}
+                                </select>
+                              </div>
+
+                                <div class="col-md-4">
+                                    <label for="mpioE" class="custom-label form-label">Municipio</label>
+                                    <select id="mpioE" name="mpioE" class="custom-input form-select" required>
+                                      <option selected disabled="true">Seleccione un municipio</option>
+                                    </select>
+                                </div>
+
+                                 <div class="col-md-4">
+                                    <label for="escuelaProcedencia" class="custom-label form-label">Escuela de procedencia</label>
+                                    <select id="escuelaProcedencia" id="escuelaProcedencia" name="escuelaProcedencia" class="custom-input form-select" required >
+                                      <option selected disabled="true">Seleccione una escuela</option>
+                                    </select>
+                                 </div>
+
+                                <div class="col-md-6">
+                                <label class="custom-label form-label">Dirección</label>
+                                <input type="text" class="custom-input form-control" id="calleE" name="calleE" required maxlength="100" disabled>
+                              </div>
+                              <div class="col-md-3">
+                                <label class="custom-label form-label">Teléfono</label>
+                                <input type="number" class="custom-input form-control" id="numeroE" name="numeroE" maxlength="10" required disabled>
+                              </div>
+                               <div class="col-md-3">
+                                <label  class="custom-label form-label">Clave</label>
+                                <input type="text" class="custom-input form-control" id="cpE" name="cpE" required maxlength="30" disabled>
+                              </div>
+
+                              <div class="col-md-2">
+                                <label  class="custom-label form-label">Año de ingreso</label>
+                                <input type="number" class="custom-input form-control" id="ingreso" name="ingreso" required maxlength="5">
+                              </div>
+
+                              <div class="col-md-2">
+                                <label  class="custom-label form-label">Año de egreso</label>
+                                <input type="number" class="custom-input form-control" id="egreso" name="egreso" required maxlength="5">
+                              </div>
+
+                              <div class="col-md-2">
+                                <label  class="custom-label form-label">Promedio</label>
+                                <input type="number" class="custom-input form-control" name="prom"  step="any" min="0.0" max="10.0" required maxlength="5">
+                              </div>
+
+                              <div class="col-md-6">
+                                    <label for="escuelaEspecialidad" class="custom-label form-label">Especialidad</label>
+                                    <select id="escuelaEspecialidad" name="escuelaEspecialidad" class="custom-input form-select" required>
+                                      <option value="1">Administración</option>
+                                      <option value="1">Administración</option>
+                                      <option value="2">Administración de la Pequeña Empresa</option>
+                                      <option value="3">Administración en Sistemas</option>
+                                      <option value="4">Biotecnología</option>
+                                      <option value="5">Ciencias Exactas y Naturales</option>
+                                      <option value="6">Ciencias Sociales</option>
+                                      <option value="7">Ciencias y Humanidades</option>
+                                      <option value="8">Computación Fiscal y Contable</option>
+                                      <option value="9">Computación y Sistemas de Administración</option>
+                                      <option value="10">Comunicación</option>
+                                      <option value="11">Dibujo Arquitectónico</option>
+                                      <option value="12">Económico-Administrativo</option>
+                                      <option value="13">Electromecánica</option>
+                                      <option value="14">Electrónica</option>
+                                      <option value="15">Físico-Químico</option>
+                                      <option value="16">Físico-Matemático</option>
+                                      <option value="17">Horticultura</option>
+                                      <option value="18">Humanidades</option>
+                                      <option value="19">Informática</option>
+                                      <option value="20">Informática Administrativa</option>
+                                      <option value="21">Instalaciones Hidráulicas y Eléctricas</option>
+                                      <option value="22">Laboratorio Químico</option>
+                                      <option value="23">Mantenimiento</option>
+                                      <option value="24">Máquinas de Combustión Interna</option>
+                                      <option value="25">Mecánica</option>
+                                      <option value="26">Mecánica Industrial</option>
+                                      <option value="27">Mecatrónica</option>
+                                      <option value="28">Nutrición</option>
+                                      <option value="29">Otro</option>
+                                      <option value="30">Práctica Docente</option>
+                                      <option value="31">Práctica Educativa</option>
+                                      <option value="32">Programador Analista</option>
+                                      <option value="33">Promotor Educativo</option>
+                                      <option value="34">Psicopedagógico</option>
+                                      <option value="35">Químico Biológico con Turismo</option>
+                                      <option value="36">Químico Biológico e Informática</option>
+                                      <option value="37">Químico Biólogo</option>
+                                      <option value="38">Químico Biólogo en el Área de Alimentos</option>
+                                      <option value="39">Químico Industrial</option>
+                                      <option value="40">Recursos Humanos</option>
+                                      <option value="41">Relaciones Humanas</option>
+                                      <option value="42">Secretaria Ejecutiva en Español</option>
+                                      <option value="43">Social Administrativo</option>
+                                      <option value="44">Técnica Agropecuaria</option>
+                                      <option value="45">Técnica en Computación</option>
+                                      <option value="46">Técnica en Informática Agropecuaria</option>
+                                      <option value="47">Técnico Agropecuario</option>
+                                      <option value="48">Técnico Electromecánico</option>
+                                      <option value="49">Técnico en Administración</option>
+                                      <option value="50">Técnico en Alimentos</option>
+                                      <option value="51">Técnico en Computación</option>
+                                      <option value="52">Técnico en Computación Fiscal Contable</option>
+                                      <option value="53">Técnico en Construcción Urbana</option>
+                                      <option value="54">Técnico en Contabilidad</option>
+                                      <option value="55">Técnico en Máquinas y Herramientas</option>
+                                      <option value="56">Técnico en Nutrición</option>
+                                      <option value="57">Técnico en Puericultura</option>
+                                      <option value="58">Técnico en Trabajo Social</option>
+                                      <option value="59">Técnico Laboratorista Clínico</option>
+                                      <option value="60">Tecnología de los Alimentos</option>
+                                      <option value="61">Tecnología en Alimentos</option>
+                                      <option value="62">Trabajadora Social</option>
+                                      <option value="63">TSU en Comercialización</option>
+                                      <option value="64">TSU en Informática</option>
+                                      <option value="65">TSU en Mantenimiento Industrial</option>
+                                      <option value="66">TSU en Mecánica</option>
+                                      <option value="67">TSU en Procesos Agroindustriales</option>
+                                      <option value="68">TSU en Tecnologías de la Información y Comunicación</option>
+                                      <option value="69">Turismo</option>
+                                      <option value="70">Viveros</option>
+                                      
+                                    </select>
+                              </div>
+
+
+                                  <div class="col-md-12">
+                                   <p class="subtemas"> <i class="material-icons iconhr" >medical_information</i> Datos Médicos</p>
+                                 </div>
+
+                              <div class="col-md-2">
+                                <label  class="custom-label form-label">Peso(kg)</label>
+                                <input type="number" class="custom-input form-control" name="peso" required>
+                              </div>
+
+                              <div class="col-md-2">
+                                <label  class="custom-label form-label">Estatura(cm)</label>
+                                <input type="number" class="custom-input form-control" name="estatura" required>
+                              </div>
+
+                              <div class="col-md-3">
+                                    <label for="tipoSangre" class="custom-label form-label">Tipo De Sangre</label>
+                                    <select id="tipoSangre" name="tipoSangre" class="custom-input form-select" required>
+                                      <option selected disabled="true">Seleccione un tipo de sangre</option>
+                                      <option value="1">A+</option>
+                                      <option value="2">A-</option>
+                                      <option value="3">B+</option>
+                                      <option value="4">B-</option>
+                                      <option value="5">AB+</option>
+                                      <option value="6">AB-</option>
+                                      <option value="7">O+</option>
+                                      <option value="8">O-</option>
+                                    </select>
+                              </div>
+
+                              <div class="col-md-5">
+                              <label for="tipoSangre" class="custom-label form-label">Selecciona si cuentas con familiares: </label><br>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input check" type="checkbox" id="hipertensos" name="hipertensos" value="1">
+                                  <label class="custom-label form-check-label" for="hipertensos">Hipertensos</label>
+
+                                </div>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input check" type="checkbox" id="diabeticos" name="diabeticos" value="1">
+                                  <label class="custom-label form-check-label" for="diabeticos">Diabéticos</label>
+
+                                </div>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input check" type="checkbox" id="cardiacos" name="cardiacos" value="1">
+                                  <label class="custom-label form-check-label" for="cardiacos">Cardiacos</label>
+
+                                </div>
+                              </div>
+
+                                <div class="col-md-12">
+                                   <p class="subtemas"> <i class="material-icons iconhr" >analytics</i> Encuesta Inicial</p>
+                                 </div>
+
+                                <div class="col-md-6">
+                                  <label for="porqueutsoe" class="custom-label form-label">¿Cómo te enteraste por primera vez de la universidad?</label>
+                                    <select id="enterarse" name="enterarse" class="custom-input form-select" required>
+                                      <option selected disabled="true">Seleccione un medio</option>
+                                      <option value="1">Padres</option>
+                                      <option value="2">Alumno de tu escuela</option>
+                                      <option value="3">Profesor de la universidad</option>
+                                      <option value="4">Visita de la Universidad al plantel</option>
+                                      <option value="5">Volantes</option>
+                                      <option value="6">Módulo en el centro comercial </option>
+                                      <option value="7">Televisión</option>
+                                      <option value="8">Familiares</option>
+                                      <option value="9">Directivos de tu escuela</option>
+                                      <option value="10">Visita a la universidad</option>
+                                      <option value="11">Carteles</option>
+                                      <option value="12">Mantas</option>
+                                      <option value="13">Módulo en la Feria Municipal</option>
+                                      <option value="14">Periódicos</option>
+                                      <option value="15">Amigos</option>
+                                      <option value="16">Alumnos de la Universidad</option>
+                                      <option value="17">Vía telefónica</option>
+                                      <option value="18">Trípticos</option>
+                                      <option value="19">Automovil con alta voz</option>
+                                      <option value="20">Radio</option>
+                                      <option value="21">Internet</option>
+                                      <option value="22">Feria Profesiográfica</option>
+                                      <option value="23">Espectaculares</option>
+                                      <option value="24">Bardas</option>
+                                    </select>
+                                 </div>
+
+                                <div class="col-md-6">
+                                    <label for="enterarseFichas" class="custom-label form-label">¿Por cuál medio te enteraste de la entrega de fichas?</label>
+                                    <select id="enterarseFichas" name="enterarseFichas" class="custom-input form-select" required>
+                                      <option selected disabled="true">Seleccione un medio</option>
+                                      <option value="1">Padres</option>
+                                      <option value="2">Alumno de tu escuela</option>
+                                      <option value="3">Profesor de la universidad</option>
+                                      <option value="4">Visita de la Universidad al plantel</option>
+                                      <option value="5">Volantes</option>
+                                      <option value="6">Módulo en centro comercial</option>
+                                      <option value="7">Televisión</option>
+                                      <option value="8">Familiares</option>
+                                      <option value="9">Directivos de tu escuela</option>
+                                      <option value="10">Visita a la Universidad</option>
+                                      <option value="11">Carteles</option>
+                                      <option value="12">Mantas</option>
+                                      <option value="13">Módulo en la Feria Municipal</option>
+                                      <option value="14">Periódicos</option>
+                                      <option value="15">Amigos</option>
+                                      <option value="16">Alumnos de la Universidad</option>
+                                      <option value="17">vía telefónica</option>
+                                      <option value="18">Trípticos</option>
+                                      <option value="19">Automovil con alta voz</option>
+                                      <option value="20">Radio</option>
+                                      <option value="21">Internet</option>
+                                      <option value="22">Feria Profesiográfica</option>
+                                      <option value="23">Espectaculares</option>
+                                      <option value="24">Bardas</option>
+                                    </select>
+                                 </div>
+
+                                 <div class="col-md-4">
+                                    <label for="porqueutsoe" class="custom-label form-label">¿Por qué te inscribes en esta universidad?</label>
+                                    <select id="porqueutsoe" name="porqueutsoe" class="custom-input form-select" required>
+                                      <option selected disabled="true">Seleccione una razón</option>
+                                      <option value="1">Me agrada la carrera</option>
+                                      <option value="2">Cuotas bajas</option>
+                                      <option value="3">El tiempo de estudio</option>
+                                      <option value="4">Los talleres y laboratorios</option>
+                                      <option value="5">El plan teórico-práctico</option>
+                                      <option value="6">La cercania</option>
+                                      <option value="7">Las becas</option>
+                                      <option value="8">El nivel Académico</option>
+                                      <option value="9">Me parece la mejor opción</option>
+                                    </select>
+                                 </div>
+
+                                 <div class="col-md-3">
+                                    <label for="otrauni" class="custom-label form-label">¿Intentaste otra universidad?</label>
+                                    <select id="otrauni" name="otrauni" class="custom-input form-select" required onchange="validarUniversidad()">
+                                      <option selected disabled="true">Seleccione una opción</option>
+                                      <option value="1">Si</option>
+                                      <option value="0">No</option>
+                                    </select>
+                                 </div>
+                                <div class="col-md-5">
+                                    <label for="cualuni" class="custom-label form-label">¿Cuál?</label>
+                                    <select id="cualuni" name="cualuni" class="custom-input form-select" required disabled >
+                                      <option selected disabled="true">Seleccione una universidad</option>
+                                      <option value="0" hidden>No aplica</option>
+                                    </select>
+                                 </div>
+
+                              <div class="col-md-4">
+                                <label  class="custom-label form-label">Nombre del padre o tutor</label>
+                                <input type="text" class="custom-input form-control" name="nombreTutor" required maxlength="30">
+                              </div>
+                              <div class="col-md-4">
+                                <label  class="custom-label form-label">Primer Apellido del padre o tutor</label>
+                                <input type="text" class="custom-input form-control" name="ape1Tutor" required maxlength="30">
+                              </div>
+                              <div class="col-md-4">
+                                <label  class="custom-label form-label">Segundo Apellido del padre o tutor</label>
+                                <input type="text" class="custom-input form-control" name="ape2Tutor" maxlength="30">
+                              </div>
+
+                              <div class="col-md-12">
+                                   <p class="subtemas"> <i class="material-icons iconhr" >flag</i> Carrera a estudiar</p>
+                              </div>
+
+                                <div class="col-md-6">
+                                    <label for="carrera1" class="custom-label form-label">Carrera como primera opción</label>
+                                    <select id="carrera1" name="carrera1" class="custom-input form-select" required>
+                                      <option selected disabled="true">Seleccione una carrera</option>
+                                      {% for carrer in lcarreras%}
+                                        <option value="{{carrer.idCarrera}}">{{carrer.nombreCarrera}}</option>
+                                      {% endfor %}
+                                    </select>
+                                 </div>
+
+                                <div class="col-md-6">
+                                    <label for="carrera2" class="custom-label form-label">Carrera como segunda opción </label>
+                                    <i id="popoverIcon" class="material-icons iconform" data-bs-toggle="popover" data-bs-trigger="hover" title="¿Por qué una segunda opción?" data-bs-content="Elige una segunda opción por si no hay cupo en la primera">info</i>
+                                    <select id="carrera2" name="carrera2" class="custom-input form-select" required>
+                                      <option selected disabled="true">Seleccione otra carrera</option>
+                                      {% for carrer in lcarreras%}
+                                        <option value="{{carrer.idCarrera}}">{{carrer.nombreCarrera}}</option>
+                                      {% endfor %}
+                                    </select>
+                                 </div>
+
+                                <div class="col-md-12">
+                                   <p class="subtemas"> <i class="material-icons iconhr" >folder</i> Documentos</p>
+                                </div>
+
+                                <div class="col-md-6">
+                                 <label  class="custom-label form-label">Acta de Nacimiento</label>
+                                 <input type="file" class="custom-input form-control" name="acta" id="acta" accept=".pdf" enctype="multipart/form-data" re>
+                                </div>
+
+                                <div class="col-md-6">
+                                 <label  class="custom-label form-label">CURP</label>
+                                 <input type="file" class="custom-input form-control" name="curpDoc" required accept=".pdf">
+                                </div>
+
+                                <div class="col-md-6">
+                                 <label  class="custom-label form-label">Certificado de bachillerato </label>
+                                 
+                               
+                                 <input type="file" class="custom-input form-control" name="certificado" id="certificado" accept=".pdf">
+                                </div>
+
+                              
+
+                      
+                              
+
+                                <div class="col-md-6">
+                                 <label  class="custom-label form-label">Constancia de Estudios</label>
+                                 <input type="file" class="custom-input form-control" name="constancia" id="constancia" accept=".pdf">
+                                </div>
+
+                                <div class="col-md-6">
+                                 <label  class="custom-label form-label">Fotografías</label>
+                                 <input type="file" class="custom-input form-control" name="foto" id="foto"  required accept=".pdf">
+                                </div>
+<!-- Pendiente
+                                 <div class="col-md-6">
+                                 <label  class="custom-label form-label">Documento de análisis sanguineo</label>
+                                 <input type="file" class="custom-input form-control" name="analisis" id="analisis" required accept=".pdf">
+                                </div>
+-->
+
+                                <div class="col-md-12">
+                                   <p class="subtemas"> <i class="material-icons iconhr" >person</i> Datos de acceso</p>
+                                </div>
+
+                              <div class="col-md-4">
+                                <label  class="custom-label form-label">Usuario</label>
+                                <input type="text" class="custom-input form-control" id="nombreUser" name="nombreUser" maxlength="10" readonly>
+                              </div>
+                              <div class="col-md-4">
+                                <label  class="custom-label form-label">Crea una contraseña</label>
+                                <input type="password" class="custom-input form-control" id="pass1" name="pass1" maxlength="6" required>
+                              </div>
+                              <div class="col-md-4">
+                                <label  class="custom-label form-label">Confirma la contraseña</label>
+                                <input type="password" class="custom-input form-control" id="pass2" name="pass2" maxlength="6" required>
+                              </div>
+
+
+                              <div class="col-12">
+
+                                <button type="submit" class="btn btn-primary btnr">Siguiente</button>
+                              </div>
+                            </form>
+ 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+  var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+    return new bootstrap.Popover(popoverTriggerEl)
+  })
+</script>
+<script>
+  //Validar que el mismo aspirante no se registre más de una vez por mes
+  $(document).ready(function() {
+    $('#curp').on('input', function() {
+        var curp = $(this).val();
+        
+        // Solicitud AJAX para verificar la curp
+        $.ajax({
+            url: '{% url "Aspirante:get_curp" %}',
+            method: 'POST',
+            data: {'curp': curp,
+                'csrfmiddlewaretoken': '{{ csrf_token }}'
+              },
+            //dataType: 'json',
+            success: function(data) {
+                if (data.error) {
+                  Swal.fire({
+                    icon: "error",
+                    title: "Error",
+                    text: "No puedes inscribirte más de una vez por mes",
+                    confirmButtonText: "Aceptar",
+                    customClass: {
+                      confirmButton: 'custom-confirm-button-class'
+                    }
+                  });
+                  $('#curp').val('');
+                }
+            },
+            /*error: function(xhr, errmsg, err) {
+                console.log(xhr.status + ": " + xhr.responseText);
+            }*/
+        });
+    });
+});
+
+</script>
+<script>
+  //Para pais, estado y municipio de nacimiento.
+$(document).ready(function() {
+    // Cargar los países
+    $.ajax({
+        url: '{% url "Aspirante:get_paises" %}',
+        dataType: 'json',
+        success: function(data) {
+            $.each(data, function(index, pais) {
+                $('#pais-select').append('<option value="' + pais.idPais + '">' + pais.nombre + '</option>');
+            });
+        }
+    });
+    //Lenar el combo de estados en el domicilio actual
+    $.ajax({
+        url: '{% url "Aspirante:get_estados2" %}',
+        dataType: 'json',
+        success: function(data) {
+            $.each(data, function(index, estado) {
+                $('#estadoD_select').append('<option value="' + estado.idEstado + '">' + estado.nombreEstado + '</option>');
+            });
+        }
+    });
+
+     //Lenar el combo de estados en los estudios de bachillerato
+     $.ajax({
+        url: '{% url "Aspirante:get_estados2" %}',
+        dataType: 'json',
+        success: function(data) {
+            $.each(data, function(index, estado) {
+                $('#estadoE').append('<option value="' + estado.idEstado + '">' + estado.nombreEstado + '</option>');
+            });
+        }
+    });
+
+    $.ajax({
+        url: '{% url "Aspirante:get_uni" %}',
+        dataType: 'json',
+        success: function(data) {
+            $.each(data, function(index, uni) {
+                $('#cualuni').append('<option value="' + uni.idUniversidad + '">' + uni.nombre + '</option>');
+            });
+        }
+    });
+
+    // Cargar los estados cuando se selecciona un país
+    $('#pais-select').change(function() {
+        var idPais = $(this).val();
+        $('#estado-select').html('<option value="">Selecciona un estado</option>');
+        if (idPais) {
+            $.ajax({
+                url: '{% url "Aspirante:get_estados" 0 %}'.replace('0', idPais),
+                dataType: 'json',
+                success: function(data) {
+                    $.each(data, function(index, estado) {
+                        $('#estado-select').append('<option value="' + estado.idEstado + '">' + estado.nombreEstado + '</option>');
+                    });
+                }
+            });
+        }
+    });
+
+    // Cargar los municipios cuando se selecciona un estado de nacimiento
+    $('#estado-select').change(function() {
+        var idEstado = $(this).val();
+        $('#municipio-select').html('<option value="">Selecciona un municipio</option>');
+        if (idEstado) {
+            $.ajax({
+                url: '{% url "Aspirante:get_municipios" 0 %}'.replace('0', idEstado),
+                dataType: 'json',
+                success: function(data) {
+                    $.each(data, function(index, municipio) {
+                        $('#municipio-select').append('<option value="' + municipio.idMunicipio + '">' + municipio.nombreMunicipio + '</option>');
+                    });
+                }
+            });
+        }
+    });
+
+    // Cargar los municipios cuando se selecciona un estado de domicilioActual
+    $('#estadoD_select').change(function() {
+        var idEstado = $(this).val();
+        $('#municipioD_select').html('<option value="">Selecciona un municipio</option>');
+        if (idEstado) {
+            $.ajax({
+                url: '{% url "Aspirante:get_municipios" 0 %}'.replace('0', idEstado),
+                dataType: 'json',
+                success: function(data) {
+                    $.each(data, function(index, municipio) {
+                        $('#municipioD_select').append('<option value="' + municipio.idMunicipio + '">' + municipio.nombreMunicipio + '</option>');
+                    });
+                }
+            });
+        }
+    });
+
+    // Cargar municipios cuando seleccione estado de bachillerato
+        $('#estadoE').change(function() {
+        var idEstado = $(this).val();
+        $('#mpioE').html('<option value="">Selecciona un municipio</option>');
+        if (idEstado) {
+            $.ajax({
+                url: '{% url "Aspirante:get_municipios" 0 %}'.replace('0', idEstado),
+                dataType: 'json',
+                success: function(data) {
+                    $.each(data, function(index, municipio) {
+                        $('#mpioE').append('<option value="' + municipio.idMunicipio + '">' + municipio.nombreMunicipio + '</option>');
+                    });
+                }
+            });
+        }
+    });
+
+    //Cargar las escuelas de procedencia cuando se seleccione un municipio
+    $('#mpioE').change(function() {
+        var idMunicipio = $(this).val();
+        $('#escuelaProcedencia').html('<option value="">Selecciona una escuela</option>');
+        if (idMunicipio) {
+            $.ajax({
+                url: '{% url "Aspirante:get_escuelas" 0 %}'.replace('0', idMunicipio),
+                dataType: 'json',
+                success: function(data) {
+                    $.each(data, function(index, escuela) {
+                        $('#escuelaProcedencia').append('<option value="' + escuela.idEscuelaProcedencia + '">' + escuela.nombreEscuela + '</option>');
+                    });
+                }
+            });
+        }
+    });
+
+  $('#escuelaProcedencia').change(function() {
+      var idEscuelaProcedencia = $(this).val();
+      $('#calleE').val(''); // Limpiar el input
+      $('#numeroE').val(''); // Limpiar el input
+      $('#cpE').val(''); // Limpiar el input
+
+      if (idEscuelaProcedencia) {
+        $.ajax({
+          url: '{% url "Aspirante:get_escuelaid" 0 %}'.replace('0', idEscuelaProcedencia),
+          dataType: 'json',
+          success: function(data) {
+            if (data.length > 0) {
+              $('#calleE').val(data[0].direccionEscuela);
+              $('#numeroE').val(data[0].telefonoEscuela);
+              $('#cpE').val(data[0].claveEscuela);
+              $('#calleE').prop('disabled', true); // Habilitar el input
+              $('#numeroE').prop('disabled', true);
+              $('#cpE').prop('disabled', true);
+            } 
+          }
+        });
+      } else {
+        $('#calleE').prop('disabled', true); // Deshabilitar el input
+      }
+    });
+
+      //Cargar las colonias cuando se seleccione el municipio
+    $('#municipioD_select').change(function() {
+        var idMunicipio = $(this).val();
+        $('#colonia-select').html('<option value="">Selecciona un municipio</option>');
+        if (idMunicipio) {
+            $.ajax({
+                url: '{% url "Aspirante:get_colonias" 0 %}'.replace('0', idMunicipio),
+                dataType: 'json',
+                success: function(data) {
+                    $.each(data, function(index, colonia) {
+                        $('#colonia-select').append('<option value="' + colonia.idColonia + '">' + colonia.nombreColonia + '</option>');
+                    });
+                }
+            });
+        }
+    });
+});
+</script>
+
+
+<script>
+  $(document).ready(function(){
+  $('[data-toggle="popover"]').popover({
+    trigger: 'click',
+    html: true,
+    container: 'body'
+  })
+
+  $('[data-toggle="popover"]').on('shown.bs.popover', function () {
+    var $popover = $(this).next('.popover');
+    var $button = $(this);
+    var buttonPosition = $button.offset();
+    var buttonHeight = $button.outerHeight();
+    var popoverHeight = $popover.outerHeight();
+    var topPosition = buttonPosition.top + buttonHeight + 10; 
+    $popover.css('top', topPosition);
+  });
+
+  
+  $('body').on('click', function (e) {
+    $('[data-toggle="popover"]').each(function () {
+      
+      if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+        $(this).popover('hide');
+      }
+    });
+  });
+});
+
+</script>
+
+
+                </div>
+{% endblock %}

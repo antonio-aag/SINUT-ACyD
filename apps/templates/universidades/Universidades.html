@@ -1,0 +1,111 @@
+{% extends "plantillaPadre.html" %}
+
+{% block content %}
+
+<div class="container-uni">
+  
+  <div class="card text-center " style="width: 80%; padding-bottom: 2%;">
+    <div class="card-body">
+      <p class="subtemas">Registro de Universidades</p>
+      <form  class="form" id="formulario" action="/registrarUniversidad/" method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+          <p><i class="material-icons-form">domain_add</i></p>
+          <div class="row">
+            <div class="col-md-8 ">
+              <label class="form-label" for="universidad">Nombre de la Universidad</label>
+              <input type="text" class="form-control" id="universidad" name="universidad"  maxlength="100"  autofocus required>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label" for="siglas">Siglas</label>
+              <input type="text" class="form-control" id="siglas" name="siglas"  maxlength="10"  autofocus required>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-md-6">
+              <label for="estado" class="form-label">Estado</label>
+              <select id="estado" name="estado" class="form-select" autofocus required>
+                <option selected disabled="true">Seleccione...</option>
+                {{ estado_form.as_p }}
+         </select>
+            </div>
+            <div class="col-md-6">
+              <label for="mpioE" class="form-label">Municipio</label autofocus required>
+              <select id="mpioE" name="mpioE" class="form-select">
+                <option selected>Seleccione...</option>
+                {{ municipio_form.as_p }}
+               </select>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-md-6">
+              <label class="form-label" for="rector">Nombre del rector</label>
+              <input type="text" class="form-control" id="rector" name="rector"  maxlength="100"  autofocus required>
+            </div>
+            <div class="col-md-6">
+              <label for="estatus" class="form-label">Estatus</label><br>
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="estatus" name="estatus" value="1" checked>
+                <label class="form-check-label" for="estatus">Activo</label>
+                
+            </div>
+            </div>
+          </div>
+        </div>
+        <a href="/tablaUniversidades/" class="btns btn btn-primary" >Listado de Universidades</a>
+        <button type="submit" class="btnr btn btn-primary">Guardar</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+   // Carga el combo de estado y municipio
+  $(document).ready(function() {
+  $.ajax({
+        url: '{% url "Aspirante:get_estados2" %}',
+        dataType: 'json',
+        success: function(data) {
+            $.each(data, function(index, estado) {
+                $('#estado').append('<option value="' + estado.idEstado + '">' + estado.nombreEstado + '</option>');
+            });
+        }
+    });
+
+
+    $('#estado').change(function() {
+        var idEstado = $(this).val();
+        $('#mpioE').html('<option value="">Selecciona un municipio</option>');
+        if (idEstado) {
+            $.ajax({
+                url: '{% url "Aspirante:get_municipios" 0 %}'.replace('0', idEstado),
+                dataType: 'json',
+                success: function(data) {
+                    $.each(data, function(index, municipio) {
+                        $('#mpioE').append('<option value="' + municipio.idMunicipio + '">' + municipio.nombreMunicipio + '</option>');
+                    });
+                }
+            });
+        }
+    });
+  });
+
+
+const checkbox = document.getElementById('estatus');
+
+checkbox.addEventListener('change', function() {
+  if (this.checked) {
+    this.value = '1';// El checkbox está seleccionado, asignar valor 1
+  } else {
+    this.value = '0';// El checkbox no está seleccionado, asignar valor 0
+  }
+});
+
+  </script>
+
+  
+{% endblock %}

@@ -1,0 +1,110 @@
+{% extends "plantillaPadre.html" %}
+
+{% block content %}
+<div class="row">
+    <p class="subtemas">Listado de Tipos de Títulos</p>
+
+    <div class="row">
+        <div class="col-sm-8 text-align">
+            <a href="/titulos/" class="botonAgregar">
+                <i class="iconadd material-icons">add_circle</i> Agregar Nuevo Título
+            </a>
+        </div>
+        <div class="col-sm-4 text-end search-bar">
+            <div class="input-group">
+                <span class="input-group-text" style="background-color: #00a886 "><i class="iconadd material-icons">search</i></span>
+                <input type="text" class="form-control" id="searchInput" onkeyup="filterTable()" placeholder="Buscar...">
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="tablep table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Titulo</th>
+                    <th scope="col">Abreviatura</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for titulo in titulos %}
+                <form id="formulario-titulos" method="GET" action="/editarTitulos/{{ titulo.idtitulo }}">
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td><input class="editable" type="text" name="titulo" id="titulo" value="{{titulo.nombre}}" maxlength="50"></td>
+                    <td><input class="editable" type="text" name="abreviatura" id="abreviatura" value="{{titulo.abreviatura}}" maxlength="10"></td>
+                    <td>
+                        <button class="material-icons-form-save" title="Guardar Cambios">save</button>
+                    </td>
+                </tr>
+                </form>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<nav aria-label="Page navigation">
+    <ul class="pagination custom-pagination">
+        {% if titulos.has_previous %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ titulos.previous_page_number }}" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+                <span class="sr-only">Anterior</span>
+            </a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <span class="page-link" aria-disabled="true">&laquo;</span>
+        </li>
+        {% endif %}
+
+        <li class="page-item active" aria-current="page">
+            <span class="page-link">
+                Página {{ titulos.number }} de {{ titulos.paginator.num_pages }}
+                <span class="sr-only"></span>
+            </span>
+        </li>
+
+        {% if titulos.has_next %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ titulos.next_page_number }}" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+                <span class="sr-only">Siguiente</span>
+            </a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <span class="page-link" aria-disabled="true">&raquo;</span>
+        </li>
+        {% endif %}
+    </ul>
+</nav>
+
+<script>
+    function filterTable() {
+        const searchInput = document.getElementById('searchInput').value.toUpperCase();
+        const table = document.querySelector('.tablep');
+        const tr = table.getElementsByTagName('tr');
+
+        for (let i = 1; i < tr.length; i++) {
+            const tds = tr[i].getElementsByTagName('td');
+            let displayRow = false;
+
+            for (let j = 0; j < tds.length; j++) {
+                const td = tds[j];
+                if (td) {
+                    if (td.innerHTML.toUpperCase().indexOf(searchInput) > -1) {
+                        displayRow = true;
+                        break;
+                    }
+                }
+            }
+
+            tr[i].style.display = displayRow ? '' : 'none';
+        }
+    }
+</script>
+{% endblock %}

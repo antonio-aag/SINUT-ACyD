@@ -1,0 +1,87 @@
+{% extends "plantillaPadre.html" %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href='{% static "css/login.css" %}'>
+<div class="container">
+  
+    <div class="row">
+        
+        <div class="col-sm-12 logo">
+        <img src='{% static "img/logout.png" %}' width="50%">
+        </div>
+        <div class="card" style="max-width: 100%">
+          <div class="row g-0">
+            <div class="col-md-8 cardp">
+              <form class="form" method="post" action="#">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group position-relative">
+                            <span class="zmdi zmdi-account"><i class="material-icons iconhr" >person</i></span>
+                            <input type="email" id="email" class="form-control" placeholder="Usuario">
+                        </div>
+                    </div>
+                    
+                    <div class="col-12">
+                        <div class="form-group position-relative">
+                            <span class="zmdi zmdi-email"><i class="material-icons iconhr" >password</i></span>
+                            <input type="password" id="password" class="form-control" placeholder="Contraseña">
+                        </div>
+                    </div>
+                    
+                    <div class="col-12 alid">
+                        <a href="#">¿Olvidaste tu contraseña?</a>
+                    </div>
+                    <div class="col-12 alid">
+                        <button type="submit" id="submit" class="btn btn-lg btnr">Entrar
+                        </button>
+                    </div>
+                </div>
+            </form>
+            </div>
+            <div class="col-md-4 ">
+              <div class="card-body ">
+                
+                <div class="list-group">
+                  <a href="#" class="list-group-item list-group-item-action gris " aria-current="true">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1">¿Quieres ser parte de la UTSOE?</h5>
+                    </div>
+                    <p class="mb-1">Realiza tu pre-registro para obtener tu ficha</p>
+                   
+                  </a>
+                  <a href="#" class="list-group-item list-group-item-action naranjita">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1">¿Ya eres TSU y quieres continuar tu ingeniería?</h5>
+  
+                    </div>
+                    <p class="mb-1">Realiza tu pre-registro para ingenierias</p>
+                    
+                  </a>
+                  <a href="#" class="list-group-item list-group-item-action gris">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1">¿Te interesa alguno de nuestros cursos?</h5>
+                      
+                    </div>
+                    <p class="mb-1">Registro para cursos UTSOE</p>
+                    
+                  </a>
+                </div>
+                
+                
+                
+                <h5 class="card-title"></h5>
+                <p class="card-text"></p>
+                <p class="card-text"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+       
+        
+      </div>
+    
+  
+</div>
+{% endblock %}

@@ -1,0 +1,89 @@
+
+{% extends "reportes/padreReportes.html" %}
+
+{% block content %}
+{% load static %}
+    <table id="reportPR" class="table table-borderless" width="100%" >
+      <tr>
+        <td style="text-align: center;" colspan="2"><img src="{% static 'img/membrete2024.jpg' %}" style="height: auto; "></td>
+      </tr>
+      <tr></tr>
+      <tr>
+        <td colspan="2" style="text-align: center; font-size: x-large;"><b>Departamento de Servicios Escolares</b></td>
+      </tr>
+      
+      <tr>
+        <td colspan="2" style="text-align: center; font-size: x-large;"><b>Pre-registro de aspirante</b></td>
+      </tr>
+      <tr></tr>
+      <tr>
+        <td style="width: 50%; font-size: large;">Folio del aspirante:</td>
+        <td style="width: 50%; font-size: large;">{{datos.idPersona.idPersona}}</td>
+  
+      </tr>
+      <tr>
+        <td style="font-size: large;">Nombre del aspirante:</td>
+        <td style="font-size: large;">{{datos.idPersona.nombre}}</td>
+  
+      </tr>
+      
+      <tr>
+        <td style="font-size: large;">Carrera seleccionada:</td>
+        <td style="font-size: large;">{{carrera1.nombreCarrera}}</td>
+  
+      </tr>
+      <tr>
+        <td style="font-size: large;">Carrera opcional:</td>
+        <td style="font-size: large;">{{carrera2.nombreCarrera}}</td>
+  
+      </tr>
+      <tr>
+        <td style="font-size: large;">Usuario:</td>
+        <td style="font-size: large;">{{usuario.usuario}}</td>
+  
+      </tr>
+      <tr>
+        <td style="font-size: large;">Contraseña:</td>
+        <td style="font-size: large;">{{usuario.contraseña}}</td>
+  
+      </tr>
+
+      <tr></tr>
+      <tr>
+        <td colspan="2" style="text-align: center; font-size: large;"><b>DOCUMENTACIÓN NECESARIA PARA PREINSCRIPCIÓN DE ASPIRANTES A EDUCANDOS DE LA UTSOE</b></td>
+      </tr>
+      <tr></tr>
+
+      <tr>
+        <td colspan="2" style="font-size: large;">1) PRESENTAR FICHA DE PREREGISTRO</td>
+      </tr>
+      <tr>
+        <td colspan="2" style="font-size: large;">2) ACTA DE NACIMIENTO (copia)</td>
+      </tr>
+      <tr>
+        <td colspan="2" style="font-size: large;">3) CERTIFICADO DE BACHILLERATO / PREPARATORIA (copia) Ó CONSTANCIA DE BACHILLERATO CON PROMEDIO (original)</td>
+      </tr>
+      <tr>
+        <td colspan="2" style="font-size: large;">4) CLAVE CURP (1 copia)</td>
+      </tr>
+      <tr>
+        <td colspan="2" style="font-size: large;">5) FOTOGRAFÍAS (2 tamaño infantil blanco y negro ó color)</td>
+      </tr>
+      <tr>
+        <td colspan="2" style="font-size: large;">6) PAGO DE FICHA CENEVAL ($300)</td>
+      </tr>
+      <tr>
+        <td colspan="2" style="font-size: large;"><b>Nota: Favor de presentar las copias en tamaño carta.</b></td>
+      </tr>
+      <tr></tr>
+      <tr></tr>
+      <tr></tr>
+      <tr>
+        <td style="font-size: large;">Fecha de inscripción: {{datos.fechaRegistro}}</td>
+        <td style="text-align: right; font-size: large;">Pié de página: 1</td>
+      </tr>
+    </table>
+
+    {% endblock %}
+
+

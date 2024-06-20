@@ -1,0 +1,37 @@
+{% extends "plantillaPadre.html" %}
+
+{% block content %}
+
+
+ <div class="container-uni"> 
+  <div class="card text-center " style="width: 40%; height: 70%; padding-bottom: 2%;">
+    <div class="card-body">
+      <p class="subtemas">Registro de Titulos</p>
+      
+      <br>
+      <form  class="form" id="formulario" action="/registrarTitulo/" method="POST"> 
+        {% csrf_token %}
+        
+        <div class="mb-3">
+          <p><i class="material-icons-form">workspace_premium</i></p>
+              <div>
+              <label class="form-label" for="siglas">Nombre</label>
+              <input type="text" class="form-control" id="titulo" name="titulo"  maxlength="50"  autofocus required>
+            </div>
+            <div>
+              <label class="form-label" for="siglas">Abreviatura</label>
+              <input type="text" class="form-control" id="abreviatura" name="abreviatura"  maxlength="10"  autofocus required>
+            </div>
+          </div>
+          <a href="/tablaTitulos/" class="btns btn btn-primary" >Listado de Titulos</a>
+          <button type="submit" class="btnr btn btn-primary">Guardar</button>
+      </form>
+          </div>
+        </div>
+ </div>
+
+        
+
+  
+{% endblock %}
+

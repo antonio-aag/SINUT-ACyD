@@ -1,0 +1,43 @@
+{% extends "plantillaPadre.html" %}
+
+{% block content %}
+
+<div class="container-uni">
+  <div class="card text-center" style="width: 85%; padding-bottom: 5%;">
+    <div class="card-body">
+      <p class="subtemas">Registro de Periodos</p>
+      <form class="form" id="formulario" action="/registrarPeriodo/" method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+          <p><i class="material-icons-form">calendar_month</i></p>
+          <div class="row">
+            <div class="col-md-6">
+              <label class="form-label" for="fechaInicio">Fecha de inicio</label>
+              <input type="date" class="form-control" id="fechaInicio" name="fechaInicio" autofocus required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label" for="fechaFin">Fecha de finalizacion</label>
+              <input type="date" class="form-control" id="fechaFin" name="fechaFin" autofocus required>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-md-6">
+              <label class="form-label" for="GenTSU">Generacion TSU</label>
+              <input type="number" step="0.5" class="form-control" id="GenTSU" name="GenTSU" autofocus required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label" for="GenING">Generacion Ingenieria</label>
+              <input type="number" step="0.5" class="form-control" id="GenING" name="GenING" autofocus required>
+            </div>
+          </div>
+        </div>
+        <br>
+        <a href="/tablaPeriodos/" class="btns btn btn-primary" >Listado de Periodos</a>
+        <button type="submit" class="btnr btn btn-primary">Guardar</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
