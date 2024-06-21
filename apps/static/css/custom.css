@@ -561,8 +561,8 @@ a:focus {
 
 @media screen and (max-width: 1582px) {
     .container-user {
-        width: 50%; 
-        height: 100%;
+        width: 40%; 
+        height: 70%;
         margin: 50px auto; 
     }
 
@@ -585,7 +585,7 @@ a:focus {
 
 @media screen and (max-width: 768px) {
     .container-user {
-        width: 60%; 
+        width: 50%; 
         height: 70%;
         margin: 50px auto; 
     }
@@ -615,7 +615,7 @@ a:focus {
     }
 
     .btn {
-        
+        width: 100px;
         padding: 8px 30px; 
         
     }
