@@ -1,0 +1,57 @@
+{% extends "reportes/padreReportes.html" %}
+
+{% block content %}
+{% load static %}
+<style>
+    @page {
+      size: landscape;
+    }
+
+    th, td {
+    padding: 2px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    width: auto; /* Ajustar ancho de columna al contenido */
+     /* Evitar salto de línea en el contenido */
+    }
+</style>
+
+<div class=" table-responsive">
+    <table class="tablep table">
+      <thead>
+        <tr>
+          <th scope="col">CCT</th>
+          <th scope="col">NOMBRE PLANTEL</th>
+          <th scope="col">MUNICIPIO</th>
+          
+          <th scope="col">CLAVE DE CARRERA</th>
+          <th scope="col">NOMBRE DE CARRERA</th>
+          <th scope="col">CAPACIDAD DE ATENCIÓN ___</th>
+          <th scope="col">PROYECCION DE FICHAS</th>
+          <th scope="col">SOLICITUDES DE FICHA</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        {% for carrera in lcarreras %}
+        <tr>
+            <td style="width: 8%;">11EUT0003Z</td>
+            <td style="width: 20%;">UNIVERSIDAD TECNOLÓGICA DEL SUROESTE DE GUANAJUATO</td>
+            <td style="width: 10%;">Valle de Santiago</td>
+            <td style="width: 10%;">{{ carrera.clave }}</td>
+            <td style="width: 22%;">{{ carrera.nombreCarrera }}</td>
+            <td style="width: 10%;">{{ carrera }}</td>
+            <td style="width: 10%;">{{aspirante.idPersona.correo}}</td>
+            <td style="width: 10%;">{{aspirante.idEscuelaProcedencia.nombreEscuela}}</td>
+            
+          
+            
+        </tr>
+        {% endfor %}
+       </tbody>
+      
+    </table>
+  </div>
+
+
+{% endblock %}

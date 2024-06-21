@@ -1,0 +1,62 @@
+{% extends "plantillaPadre.html" %}
+
+{% block content %}
+
+<div class="row">
+  
+<div class="container-user">
+  <div class="card text-center" style="width: 35%; padding-bottom: 2%;">
+    <div class="card-body">
+    <p class="subtemas">Tipo de Usuario</p>
+    <br>
+    <form class="form" id="formulario" action="/registrarUsuario/" method="POST">
+      {% csrf_token %}
+      <div class="mb-3">
+      <p ><i class="material-icons-form">groups</i></p>
+      <div class="mb-3">
+        <label for="user" class="form-label">Nombre del Tipo de Usuario</label>
+        <input type="text" class="form-control" id="user" name="user" maxlength="20" autofocus required>
+      </div>
+      <br>
+      <label for="estatus" class="form-label">Estatus</label>
+      <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" id="estatus" name="estatus" value="1" checked>
+        <label class="form-check-label" for="estatus">Activo</label>
+        
+    </div>
+    
+    
+      <br>
+    </div>
+    
+
+    <a href="/tablaTipoUsuario/" class="btns btn btn-primary" >Listado de Usuarios</a>
+    <button type="submit" class="btnr btn btn-primary">Guardar</button>
+    </form>
+  </div>
+  </div>
+</div>
+<br>
+</div>
+
+
+<script>
+  //script para mostrar el valor de encendido y pagado en el campo status
+  const checkbox = document.getElementById('estatus');
+
+  checkbox.addEventListener('change', function() {
+    if (this.checked) {
+      this.value = '1';// El checkbox está seleccionado, asignar valor 1
+    } else {
+      this.value = '0';// El checkbox no está seleccionado, asignar valor 0
+    }
+  });
+</script>
+
+  
+
+
+{% endblock %}
+
+
+

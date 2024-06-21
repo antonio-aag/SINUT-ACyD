@@ -1,0 +1,100 @@
+{% extends "plantillaPadre.html" %}
+
+{% block content %}
+
+<div class="container-uni">
+  
+  <div class="card text-center " style="width: 80%; padding-bottom: 2%;">
+    <div class="card-body">
+      <p class="subtemas">Registro de Carreras</p>
+      <form class="form" id="formulario" action="/registrarCarrera/" method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+          <p><i class="material-icons-form"><svg xmlns="http://www.w3.org/2000/svg" width="15%" height="15%" fill="currentColor" color="#003263"  class="bi bi-suitcase-lg" viewBox="0 0 16 16" padding: 2%;>
+            <path d="M5 2a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2h3.5A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5H14a.5.5 0 0 1-1 0H3a.5.5 0 0 1-1 0h-.5A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2zm1 0h4a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1M1.5 3a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5H3V3zM15 12.5v-9a.5.5 0 0 0-.5-.5H13v10h1.5a.5.5 0 0 0 .5-.5m-3 .5V3H4v10z"/>
+          </svg></i></p>
+          <div class="row">
+            <div class="col-md-8 ">
+              <label class="form-label" for="universidad">Nombre de la Carrera</label>
+              
+              <input type="text" class="form-control" id="carrera" name="carrera" maxlength="100"  autofocus required>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label" for="siglas">Siglas</label>
+              <input type="text" class="form-control" id="siglas_carrera" name="siglas_carrera" maxlength="10"  autofocus required>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-md-6 ">
+              <label class="form-label" for="universidad">Clave</label>
+              <input type="text" class="form-control" id="clave" name="clave" maxlength="15"  autofocus required>
+            </div>
+            <div class="col-md-6">
+              <label for="modalidad" class="form-label">Modalidad</label>
+              <select id="modalidad" name="modalidad" class="form-select" autofocus required>
+                <option selected disabled="true">Seleccione...</option>
+                  <option value="1">Escolarizada</option>
+                  <option value="2">Mixta</option>
+              </select>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-md-6 ">
+              <label class="form-label" for="universidad">Area</label>
+              <input type="text" class="form-control" id="area" name="area" maxlength="10"  autofocus required>
+            </div>
+            <div class="col-md-6">
+              <label for="director" class="form-label">Director</label>
+              <select id="director" name="director" class="form-select" autofocus required>
+                <option selected disabled="true">Seleccione...</option>
+                
+                {% for empleado in lEmpleados %}
+                    <option value="{{ empleado.idEmpleado }}" >
+                      {{ empleado.idTitulo.abreviatura }} {{ empleado.idPersona.nombre }} {{ empleado.idPersona.ape1 }} {{ empleado.idPersona.ape2 }}
+                    </option>
+                {% endfor %}
+              
+
+              </select>
+            </div>
+          </div>
+          <br>
+
+          <div class="row">
+            <div class="col-md-3">
+              <label class="form-label" for="nivel">Nivel</label>
+              <select id="nivel" name="nivel" class="form-select" autofocus required>
+                <option selected>Seleccione...</option>
+               
+                  <option value="1">TSU</option>
+                  <option value="2">ingenieria</option>
+              </select>
+             
+            </div>
+            <div class="col-md-1">
+            </div>
+            <div class="col-md-2">
+              <label for="estatus" class="form-label">Estatus</label><br>
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="estatus" name="estatus" value="1" checked>
+                <label class="form-check-label" for="estatus">Activo</label>
+                
+            </div>
+            
+            </div>
+          
+            
+          </div>
+        </div>
+        <a href="/tablaCarreras/" class="btns btn btn-primary" >Listado de Tipos de Carreras</a>
+       
+        <button type="submit" class="btnr btn btn-primary">Guardar</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+

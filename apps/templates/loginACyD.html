@@ -1,0 +1,62 @@
+{% load static %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+        <title>SINUT</title>
+	    <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href='{% static "css/bootstrap.min.css" %}'>
+
+
+	    <!----css3---->
+
+
+        <link rel="stylesheet" href='{% static "css/custom.css" %}'>
+        <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+ <link rel="stylesheet" href='{% static "css/login.css" %}'>
+
+<body class="login">
+<div class="container-user">
+    <div class="row">
+        <div class="col-sm-12 logo">
+        <img src='{% static "img/logout.png" %}' width="35%" >
+        </div>
+        <div class="card">
+          <div class="row g-0">
+            <div class="col-md-8 cardp">
+              <form class="form-label" method="post" action="#">
+                <div class="row">
+                  <div class="logo">
+                    <img src='{% static "img/conejo.png" %}' width="40%" >
+                  </div>
+                    <div class="col-12">
+                        <div class="form-group position-relative">
+                            <span class="zmdi zmdi-account"><i class="material-icons iconhr" >person</i></span>
+                            <input type="email" id="email" class="form-control" placeholder="Usuario">
+                        </div>
+                    </div> 
+                    <div class="col-12">
+                        <div class="form-group position-relative">
+                            <span class="zmdi zmdi-email"><i class="material-icons iconhr" >password</i></span>
+                            <input type="password" id="password" class="form-control" placeholder="Contraseña">
+                        </div>
+                    </div>
+                    
+                    <div class="col-12 alid">
+                        <a href="#">¿Olvidaste tu contraseña?</a>
+                    </div>
+                    <div class="alid">
+                        <button type="submit" id="submit" class="btn btn-lg btnr">Entrar
+                        </button>
+                    </div>
+                </div>
+              </form>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
