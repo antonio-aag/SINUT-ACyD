@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from sinut2.views import menu, indexalumno, procesosalumno, reportesalumno, pagosalumno , loginACyD
+from sinut2.views import menu, indexalumno, procesosalumno, reportesalumno, pagosalumno ,login
 from sinut2.views import reinscripcionlinea, editdatosalumno, cambiopass
 from sinut2.views import adeudosalumno, boletas, documentacionelec, historialpagos
 from apps.Aspirante.views import *
@@ -33,9 +33,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', menu),
     path('pre/', preRegistro),
-    
+    path('login', login),
+
   
-    path('login', loginACyD),
     path('', include('apps.Aspirante.urls')),
     path('', include('apps.Persona.urls')),
     path('', include('apps.Usuario.urls')),
@@ -64,6 +64,8 @@ urlpatterns = [
     path('boletas', boletas),
     path('documentacion', documentacionelec),
     path('hpagos', historialpagos),
+#
+    path('LoginACyD/', loginACyD, name='loginACyD'),
 
 
 

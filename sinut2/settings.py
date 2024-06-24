@@ -90,7 +90,9 @@ DATABASES = {
         'NAME': 'db.sqlite3',
     }
 }
+
 '''DATABASES = {
+>>>>>>> 508c764b88594c14cd4250680cfe4b0c9289332f
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'sinut_bd',
@@ -100,8 +102,7 @@ DATABASES = {
 
     }
 }'''
-
-"""
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -114,7 +115,7 @@ DATABASES = {
     }
 }
 
-"""
+'''
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators

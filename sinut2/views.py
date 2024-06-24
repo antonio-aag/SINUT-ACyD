@@ -9,6 +9,8 @@ def menu(request):
 
 def loginACyD(request):
     return render (request, "loginACyD.html")
+def login(request):
+    return render (request, "login.html")
     
 #views alumnos
 def indexalumno(request):
