@@ -35,7 +35,7 @@ urlpatterns = [
     path('pre/', preRegistro),
     
   
-    path('LoginACyD/', loginACyD),
+    path('login/', loginACyD),
     path('', include('apps.Aspirante.urls')),
     path('', include('apps.Persona.urls')),
     path('', include('apps.Usuario.urls')),
