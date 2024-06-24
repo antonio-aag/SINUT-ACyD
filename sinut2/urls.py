@@ -65,7 +65,7 @@ urlpatterns = [
     path('documentacion', documentacionelec),
     path('hpagos', historialpagos),
 #
-    path('LoginACyD/', loginACyD),
+        path('LoginACyD/', loginACyD),
 
 
 
