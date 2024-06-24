@@ -33,9 +33,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', menu),
     path('pre/', preRegistro),
-    
+    path('login', login),
+
   
-    path('login/', loginACyD),
     path('', include('apps.Aspirante.urls')),
     path('', include('apps.Persona.urls')),
     path('', include('apps.Usuario.urls')),
@@ -64,6 +64,8 @@ urlpatterns = [
     path('boletas', boletas),
     path('documentacion', documentacionelec),
     path('hpagos', historialpagos),
+#
+        path('LoginACyD/', loginACyD),
 
 
 
