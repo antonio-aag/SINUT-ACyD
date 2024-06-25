@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from sinut2.views import menu, indexalumno, procesosalumno, reportesalumno, pagosalumno ,login
+from sinut2.views import menu, indexalumno, procesosalumno, reportesalumno, pagosalumno ,login,loginACyD
 from sinut2.views import reinscripcionlinea, editdatosalumno, cambiopass
 from sinut2.views import adeudosalumno, boletas, documentacionelec, historialpagos
 from apps.Aspirante.views import *
