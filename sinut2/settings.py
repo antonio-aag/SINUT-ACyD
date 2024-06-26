@@ -92,7 +92,6 @@ DATABASES = {
 }
 
 '''DATABASES = {
->>>>>>> 508c764b88594c14cd4250680cfe4b0c9289332f
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'sinut_bd',
